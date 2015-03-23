@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2015 5:14:14 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Pojo.Department" table="department" catalog="labsystem">
+        <id name="idDepartment" type="java.lang.Integer">
+            <column name="id_department" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="45" not-null="true" />
+        </property>
+        <property name="isActive" type="int">
+            <column name="is_active" not-null="true" />
+        </property>
+        <set name="courses" table="course" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dept_id" not-null="true" />
+            </key>
+            <one-to-many class="Pojo.Course" />
+        </set>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dept_id" not-null="true" />
+            </key>
+            <one-to-many class="Pojo.User" />
+        </set>
+    </class>
+</hibernate-mapping>

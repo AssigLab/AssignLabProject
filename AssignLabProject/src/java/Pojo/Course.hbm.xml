@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2015 5:14:14 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Pojo.Course" table="course" catalog="labsystem">
+        <id name="idCourse" type="java.lang.Integer">
+            <column name="id_course" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="department" class="Pojo.Department" fetch="select">
+            <column name="dept_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="45" not-null="true" />
+        </property>
+        <property name="isActive" type="int">
+            <column name="is_active" not-null="true" />
+        </property>
+        <set name="staffCourseGroups" table="staff_course_group" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course_id" not-null="true" />
+            </key>
+            <one-to-many class="Pojo.StaffCourseGroup" />
+        </set>
+        <set name="labs" table="lab" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course_id" not-null="true" />
+            </key>
+            <one-to-many class="Pojo.Lab" />
+        </set>
+        <set name="groups" table="groups_courses" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="course_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="Pojo.Group">
+                <column name="group_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

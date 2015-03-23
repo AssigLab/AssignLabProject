@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2015 5:14:14 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="Pojo.UploadFile" table="upload_file" catalog="labsystem">
+        <composite-id name="id" class="Pojo.UploadFileId">
+            <key-property name="userId" type="int">
+                <column name="user_id" />
+            </key-property>
+            <key-property name="labId" type="int">
+                <column name="lab_id" />
+            </key-property>
+        </composite-id>
+        <property name="file" type="binary">
+            <column name="file" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
