@@ -3,8 +3,7 @@ package DAO;
 import Pojo.Course;
 import Pojo.Department;
 import java.util.List;
-
-
+import org.hibernate.Query;
 
 /**
  * @author Sara
@@ -13,74 +12,90 @@ import java.util.List;
  */
 public class CourseDAO extends GenericDAO {
 
-	public CourseDAO(){
+    public CourseDAO() {
+        super();
+    }
 
-	}
 
-	
+    /**
+     *
+     * @param courseObj
+     */
+    public void Delete(Course courseObj) {
+        // begin transaction
+        beginTransaction();
+        delete(courseObj);
+        getTransaction().commit();
+    }
 
-	/**
-	 * 
-	 * @param c
-	 */
-	public int deactive(Course c){
-		return 0;
-	}
+    /**
+     *
+     * @param courseObj
+     */
+    public void insert(Course courseObj) {
+        // begin transaction
+        System.out.println("JIIIII");
+        beginTransaction();
+        persist(courseObj);
+        getTransaction().commit();
+        System.out.println("J22222");
+    }
 
-	/**
-	 * 
-	 * @param c
-	 */
-	public int delete(Course c){
-		return 0;
-	}
+    /**
+     *
+     * @param deptObj
+     */
+    public List selectAllActiveCourse(Department deptObj) {
+        String hql = "FROM Course p where p.isActive=0 and p.department.idDepartment="+deptObj.getIdDepartment();
+        Query query = getSession().createQuery(hql);
+        return query.list();
+    }
 
-	/**
-	 * 
-	 * @param c
-	 */
-	public int insert(Course c){
-		return 0;
-	}
+    /**
+     *
+     * @param d
+     */
+    public List selectAllDeactiveCourse(Department deptObj) {
+        String hql = "FROM Course p where p.isActive=1 and p.department.idDepartment="+deptObj.getIdDepartment();
+        Query query = getSession().createQuery(hql);
+        return query.list();
+    }
 
-	/**
-	 * 
-	 * @param d
-	 */
-	public List selectAllActiveCourse(Department d){
-		return null;
-	}
+    /**
+     *
+     * @param courseObj
+     */
+    public List selectOneCourse(Course courseObj) {
+        String hql = "FROM Course p where p.idCourse="+courseObj.getIdCourse();
+        Query query = getSession().createQuery(hql);
+        return query.list();
+    }
 
-	/**
-	 * 
-	 * @param d
-	 */
-	public List selectAllDeactiveCourse(Department d){
-		return null;
-	}
+    /**
+     *
+     * @param courseObj
+     */
+    public void Update(Course courseObj) {
+        // begin transaction
+        beginTransaction();
+        merge(courseObj);
+        getTransaction().commit();
+    }
 
-	/**
-	 * 
-	 * @param c
-	 */
-	public Course  selectOneActiveCourse(Course c){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param c
-	 */
-	public Course  selectOneDeactiveCourse(Course c){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param c
-	 */
-	public int update(Course c){
-		return 0;
-	}
-
+    /**
+     *
+     * @param courseObj
+     */
+    public List SelectOneByName(Course courseObj) {
+        Query query = null;
+        String hql = null;
+        if (courseObj.getIdCourse()== null) {
+            hql = "FROM Course p where p.name='" + courseObj.getName() + "'";
+            query = getSession().createQuery(hql);
+        } else {
+            hql = "FROM Course p where p.idCourse <> " + courseObj.getIdCourse()+ " and p.name='" + courseObj.getName() + "'";
+            query = getSession().createQuery(hql);
+        }
+        return query.list();
+    }
 }

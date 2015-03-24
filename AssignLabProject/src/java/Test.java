@@ -86,24 +86,24 @@ public class Test extends GenericDAO {
                  course.setDescription("java");
                  course.setName("java");
                  
-               Lab lab=new Lab();
-               lab.setIdLab(1);
-              lab.setName("lab1");
-              lab.setDescription("java lab");
-              lab.setEndDate(new Date());
-              lab.setStartDate(new Date());
-              lab.setCourse(course);
+//               Lab lab=new Lab();
+//               lab.setIdLab(1);
+//              lab.setName("lab1");
+//              lab.setDescription("java lab");
+//              lab.setEndDate(new Date());
+//              lab.setStartDate(new Date());
+//              lab.setCourse(course);
             
              //  queue.insertTraineeInDeliveryQueue( user ,lab);
               Date date=new Date();
                // queue.shiftDeliveryQueue(lab ,date);
-  List list= queue.getTraineeInDeliveryQueue(lab);
- for(int i=0; i<list.size();i++)
-     
- {
- User user1= (User)list.get(i);
-  System.out.println(user1.getName());
- }     
+//  List list= queue.getTraineeInDeliveryQueue(lab);
+// for(int i=0; i<list.size();i++)
+//     
+// {
+// User user1= (User)list.get(i);
+//  System.out.println(user1.getName());
+// }     
    //session.beginTransaction();
 //session.persist(user);
 //session.persist(buyProduct);

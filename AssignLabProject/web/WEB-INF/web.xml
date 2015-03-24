@@ -21,6 +21,14 @@
         <servlet-class>Depatservlets.beforeDeactDepart</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>beforeAddCourse</servlet-name>
+        <servlet-class>Courseservlets.beforeAddCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>validAddCourse</servlet-name>
+        <servlet-class>Courseservlets.validAddCourse</servlet-class>
+    </servlet>
+	    <servlet>
         <servlet-name>validateGroupName</servlet-name>
         <servlet-class>GroupServlets.validateGroupName</servlet-class>
     </servlet>
@@ -53,6 +61,14 @@
         <url-pattern>/beforeDeactDepart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>beforeAddCourse</servlet-name>
+        <url-pattern>/beforeAddCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>validAddCourse</servlet-name>
+        <url-pattern>/validAddCourse</url-pattern>
+    </servlet-mapping>
+	    <servlet-mapping>
         <servlet-name>validateGroupName</servlet-name>
         <url-pattern>/validateGroupName</url-pattern>
     </servlet-mapping>
@@ -69,4 +85,7 @@
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>AdminView/index.html</welcome-file>
+    </welcome-file-list>
 </web-app>

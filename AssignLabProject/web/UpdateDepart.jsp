@@ -8,13 +8,14 @@
         <c:set var="deptlist" value="${requestScope.allactiveDepart}"/>
 
         <meta charset="utf-8">
-        <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
-        <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
-        <script type="text/javascript" src="./js/jquery-1.4.2.min.js" ></script>
-        <script type="text/javascript" src="./js/cufon-yui.js"></script>
-        <script type="text/javascript" src="./js/cufon-replace.js"></script>
-        <script type="text/javascript" src="./js/Myriad_Pro_300.font.js"></script>
-        <script type="text/javascript" src="./js/Myriad_Pro_400.font.js"></script>
+        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+        <script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+        <script type="text/javascript" src="js/cufon-yui.js"></script>
+        <script type="text/javascript" src="js/cufon-replace.js"></script>
+        <script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+        <script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
         <!--  <script type="text/javascript" src="./js/script.js"></script>-->
 
         <script>
@@ -48,11 +49,11 @@
                     <h1><a href="#">Student's site</a></h1>
                     <nav>
                         <ul>
-                            <li><a href="index.jsp" class="m1">Home</a></li>
-                            <li><a href="Group.jsp" class="m2">Group</a></li>
-                            <li class="current"><a href="Department.jsp" class="m3">Department</a></li>
-                            <li><a href="Course.jsp" class="m4">Course</a></li>
-                            <li><a href="User.jsp" class="m5">User</a></li>
+                            <li><a href="index.html" class="m1">Home</a></li>
+                            <li><a href="Group.html" class="m2">Group</a></li>
+                            <li class="current"><a href="Department.html" class="m3">Department</a></li>
+                            <li><a href="Course.html" class="m4">Course</a></li>
+                            <li><a href="User.html" class="m5">User</a></li>
                             <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li>
 
                         </ul>
@@ -72,7 +73,7 @@
                     <ul class="categories">
                         <li><span><a href="AddDepart.jsp">Create Department</a></span></li>
                         <li><span><a href="beforeUpdateDepart">Update Department</a></span></li>
-                        <li><span><a href="deleteGroup.jsp" >Delete Department</a></span></li>
+                        <li><span><a href="deleteGroup.html" >Delete Department</a></span></li>
                         <li class="last"><span><a href="beforeDeactDepart">Deactivate Department</a></span></li>
                     </ul>
 
@@ -144,7 +145,7 @@
                                             </td>
                                             <td>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="name"  id="popup_txt1" placeholder="Department Name" required="">
+                                                    <input type="text" style="width:250px" class="form-control" name="name"  id="popup_txt1" placeholder="Department Name" required="">
                                                 </div>
                                             </td>
                                         </tr>
@@ -154,7 +155,7 @@
                                             </td>
                                             <td>
                                                 <div class="form-group">
-                                                    <textarea class="form-control" name="description" id="popup_txt2" placeholder="Department Description" required=""> </textarea>
+                                                    <textarea class="form-control" style="width:250px" name="description" id="popup_txt2" placeholder="Department Description" required=""> </textarea>
                                                 </div>
                                             </td>
                                         </tr>

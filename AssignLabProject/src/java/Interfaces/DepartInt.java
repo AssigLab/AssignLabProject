@@ -40,13 +40,8 @@ public interface DepartInt {
      *
      * @param Obj
      */
-    public List GetOneDepartActive(Department Obj);
+    public List GetOneDepart(Department Obj);
 
-    /**
-     *
-     * @param Obj
-     */
-    public List GetOneDepartDeactive(Department Obj);
 
     /**
      *

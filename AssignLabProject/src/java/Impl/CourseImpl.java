@@ -16,47 +16,50 @@ import java.util.List;
  */
 public class CourseImpl implements CourseInt {
 
-	public CourseDAO m_CourseDAO;
+    public CourseDAO Obj;
 
-
-    @Override
-    public int create(Course crs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CourseImpl() {
+        Obj = new CourseDAO();
     }
 
     @Override
-    public int deactive(Course crs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void create(Course courseObj) {
+        Obj.insert(courseObj);
     }
 
     @Override
-    public int delete(Course crs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deactive(Course courseObj) {
+        Obj.Update(courseObj);
+    }
+
+    @Override
+    public void delete(Course courseObj) {
+       Obj.Delete(courseObj);
     }
 
     @Override
     public List getAllActiveCourses(Department dept) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return Obj.selectAllActiveCourse(dept);
     }
 
     @Override
     public List getAllDeactiveCourses(Department dept) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return Obj.selectAllDeactiveCourse(dept);
     }
 
     @Override
-    public List getOneCourseActive(Course crs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getOneCourse(Course courseObj) {
+        return Obj.selectOneCourse(courseObj);
     }
 
     @Override
-    public List getOneCourseDeactive(Course crs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Course courseObj) {
+        Obj.Update(courseObj);
     }
-
+    
     @Override
-    public int update(Course crs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getCourseByName(Course courseObj) {
+        return Obj.SelectOneByName(courseObj);
     }
 
 }

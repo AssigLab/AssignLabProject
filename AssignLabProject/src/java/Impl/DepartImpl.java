@@ -45,12 +45,7 @@ public class DepartImpl implements DepartInt {
     }
 
     @Override
-    public List GetOneDepartActive(Department departObj) {
-        return Obj.SelectOne(departObj);
-    }
-
-    @Override
-    public List GetOneDepartDeactive(Department departObj) {
+    public List GetOneDepart(Department departObj) {
         return Obj.SelectOne(departObj);
     }
 

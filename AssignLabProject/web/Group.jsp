@@ -29,7 +29,7 @@
                         <ul>
                             <li><a href="index.jsp" class="m1">Home</a></li>
                             <li class="current"><a href="Group.jsp" class="m2">Group</a></li>
-                            <li><a href="Department.jsp" class="m3">Department</a></li>
+                            <li><a href="Department.html" class="m3">Department</a></li>
                             <li><a href="Course.jsp" class="m4">Course</a></li>
                             <li><a href="User.jsp" class="m5">User</a></li>
                             <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li>

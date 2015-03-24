@@ -1,9 +1,7 @@
 package Interfaces;
 
-
 import Pojo.*;
 import java.util.List;
-
 
 /**
  * @author Sara
@@ -12,52 +10,48 @@ import java.util.List;
  */
 public interface CourseInt {
 
-	/**
-	 * 
-	 * @param crs
-	 */
-	public int create(Course crs);
+    /**
+     *
+     * @param crs
+     */
+    public void create(Course crs);
 
-	/**
-	 * 
-	 * @param crs
-	 */
-	public int deactive(Course crs);
+    /**
+     *
+     * @param crs
+     */
+    public void deactive(Course crs);
 
-	/**
-	 * 
-	 * @param crs
-	 */
-	public int delete(Course crs);
+    /**
+     *
+     * @param crs
+     */
+    public void delete(Course crs);
 
-	/**
-	 * 
-	 * @param dept
-	 */
-	public List getAllActiveCourses(Department dept);
+    /**
+     *
+     * @param dept
+     */
+    public List getAllActiveCourses(Department dept);
 
-	/**
-	 * 
-	 * @param dept
-	 */
-	public List getAllDeactiveCourses(Department dept);
+    /**
+     *
+     * @param dept
+     */
+    public List getAllDeactiveCourses(Department dept);
 
-	/**
-	 * 
-	 * @param crs
-	 */
-	public List getOneCourseActive(Course crs);
+    /**
+     *
+     * @param crs
+     */
+    public List getOneCourse(Course crs);
 
-	/**
-	 * 
-	 * @param crs
-	 */
-	public List getOneCourseDeactive(Course crs);
+    /**
+     *
+     * @param crs
+     */
+    public void update(Course crs);
 
-	/**
-	 * 
-	 * @param crs
-	 */
-	public int update(Course crs);
+    public List getCourseByName(Course crs);
 
 }

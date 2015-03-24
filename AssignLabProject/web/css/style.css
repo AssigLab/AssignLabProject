@@ -560,7 +560,18 @@ a {
 
 
 .form-control {
-    box-shadow: none;
+    background: white; 
+    border: 1px double #DDD; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px #333; 
+    color: #666; 
+    outline: none; 
+    height:25px; 
+    width: 275px; 
+    font-size: 13px;
+    margin-left: 10px;
+
+/*    box-shadow: none;
     background-color: #FFFFFF;
     background-image: none;
     border: 1px solid #e5e6e7;
@@ -571,7 +582,7 @@ a {
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     width: 350px;
     font-size: 14px;
-    margin-left: 10px;
+    margin-left: 10px;*/
 }
 .assign-form-control{
     box-shadow: none;
