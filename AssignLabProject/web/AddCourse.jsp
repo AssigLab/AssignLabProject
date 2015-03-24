@@ -127,10 +127,10 @@
                 <aside>
                     <h3>Categories</h3>
                     <ul class="categories">
-                        <li><span><a href="../beforeAddCourse">Create Course</a></span></li>
+                        <li><span><a href="beforeAddCourse">Create Course</a></span></li>
                         <li><span><a href="#">Update Course</a></span></li>
                         <li><span><a href="#">Delete Course</a></span></li>
-                        <li><span><a href="#">Deactivate Course</a></span></li>
+                        <li><span><a href="beforeDeactCourse">Deactivate Course</a></span></li>
                         <li  class="last"><span><a href="#">Add Lab To Course</a></span></li>
                     </ul>
 

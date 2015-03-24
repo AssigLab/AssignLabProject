@@ -28,7 +28,7 @@
         <servlet-name>validAddCourse</servlet-name>
         <servlet-class>Courseservlets.validAddCourse</servlet-class>
     </servlet>
-	    <servlet>
+    <servlet>
         <servlet-name>validateGroupName</servlet-name>
         <servlet-class>GroupServlets.validateGroupName</servlet-class>
     </servlet>
@@ -39,6 +39,18 @@
     <servlet>
         <servlet-name>validateNameUpdateGroup</servlet-name>
         <servlet-class>GroupServlets.validateNameUpdateGroup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getCoursesByDept</servlet-name>
+        <servlet-class>Courseservlets.getCoursesByDept</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>beforeDeactCourse</servlet-name>
+        <servlet-class>Courseservlets.beforeDeactCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>validDeactCourse</servlet-name>
+        <servlet-class>Courseservlets.validDeactCourse</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>validAddDepart</servlet-name>
@@ -68,7 +80,7 @@
         <servlet-name>validAddCourse</servlet-name>
         <url-pattern>/validAddCourse</url-pattern>
     </servlet-mapping>
-	    <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>validateGroupName</servlet-name>
         <url-pattern>/validateGroupName</url-pattern>
     </servlet-mapping>
@@ -79,6 +91,18 @@
     <servlet-mapping>
         <servlet-name>validateNameUpdateGroup</servlet-name>
         <url-pattern>/validateNameUpdateGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCoursesByDept</servlet-name>
+        <url-pattern>/getCoursesByDept</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>beforeDeactCourse</servlet-name>
+        <url-pattern>/beforeDeactCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>validDeactCourse</servlet-name>
+        <url-pattern>/validDeactCourse</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
