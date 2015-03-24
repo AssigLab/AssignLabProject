@@ -8,14 +8,14 @@
         <c:set var="deptlist" value="${requestScope.allactiveDepart}"/>
 
         <meta charset="utf-8">
-        <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
-        <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
-        <script type="text/javascript" src="./js/jquery-1.4.2.min.js" ></script>
-        <script type="text/javascript" src="./js/cufon-yui.js"></script>
-        <script type="text/javascript" src="./js/cufon-replace.js"></script>
-        <script type="text/javascript" src="./js/Myriad_Pro_300.font.js"></script>
-        <script type="text/javascript" src="./js/Myriad_Pro_400.font.js"></script>
-        <!--  <script type="text/javascript" src="./js/script.js"></script>-->
+        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+        <script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+        <script type="text/javascript" src="js/cufon-yui.js"></script>
+        <script type="text/javascript" src="js/cufon-replace.js"></script>
+        <script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+        <script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
 
         <script>
             // when user select department , will assign department name , description in text field
@@ -46,7 +46,7 @@
                     <h1><a href="#">Student's site</a></h1>
                     <nav>
                         <ul>
-                            <li><a href="index.jsp" class="m1">Home</a></li>
+                             <li><a href="index.jsp" class="m1">Home</a></li>
                             <li><a href="Group.jsp" class="m2">Group</a></li>
                             <li class="current"><a href="Department.jsp" class="m3">Department</a></li>
                             <li><a href="Course.jsp" class="m4">Course</a></li>
@@ -70,7 +70,7 @@
                     <ul class="categories">
                         <li><span><a href="AddDepart.jsp">Create Department</a></span></li>
                         <li><span><a href="beforeUpdateDepart">Update Department</a></span></li>
-                        <li><span><a href="#">Delete Department</a></span></li>
+                        <li><span><a href="Department.jsp">Delete Department</a></span></li>
                         <li  class="last"><span><a href="beforeDeactDepart">Deactivate Department</a></sp
                     </ul>
 
@@ -104,7 +104,7 @@
                                     </td>
                                     <td>
                                         <div>
-                                            <select class="form-control" name="AllDepart" onchange="refreshComp()" id="deptsall">
+                                            <select class="form-control"  style="width:250px" name="AllDepart" onchange="refreshComp()" id="deptsall">
                                                 <option selected="selected" value="" selected="selected">Choose...</option>
                                                 <c:forEach var="fieldItem" items="${deptlist}">
                                                     <option value="${fieldItem.name}">${fieldItem.name}</option>             
@@ -131,7 +131,7 @@
                                     <table class="popup-form">
                                         <tr>
                                             <td colspan="2">
-                                                <div id="popup_form_header">Deactivate Department</div>
+                                                <div id="popup_form_header">Update Department</div>
                                             </td>
                                             <td></td>
 
@@ -148,7 +148,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Confirm</button>
+                                                <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Apply</button>
                                                 <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn2">Cancel</button> 
                                             </td>
                                             <td>

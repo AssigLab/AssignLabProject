@@ -33,22 +33,11 @@ public class beforeUpdateDepart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet beforeUpdateDepart</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet beforeUpdateDepart at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {
-            out.close();
-        }
+        DepartInt deptIntObj = new DepartImpl();
+        List l = deptIntObj.GetAllDepartActive();
+        System.out.println("GGGPPG=" + l.size());
+        request.setAttribute("allactiveDepart", l);
+        getServletContext().getRequestDispatcher("/UpdateDepart.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,11 +52,7 @@ public class beforeUpdateDepart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DepartInt deptIntObj = new DepartImpl();
-        List l = deptIntObj.GetAllDepartActive();
-        System.out.println("GGGPPG=" + l.size());
-        request.setAttribute("allactiveDepart", l);
-        getServletContext().getRequestDispatcher("/UpdateDepart.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -81,12 +66,7 @@ public class beforeUpdateDepart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DepartInt deptIntObj = new DepartImpl();
-        List l = deptIntObj.GetAllDepartActive();
-        System.out.println("GGGPPG=" + l.size());
-        RequestDispatcher dispatcher1 = request.getRequestDispatcher("/UpdateDepart.jsp");
-        request.setAttribute("allactiveDepart", l);
-        dispatcher1.forward(request, response);
+        processRequest(request, response);
     }
 
     /**

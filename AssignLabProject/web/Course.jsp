@@ -1,7 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Admin's View | Course Section</title>
+        <title>Course</title>
+        <!--get All Active department from request --> 
         <meta charset="utf-8">
         <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
         <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
@@ -10,14 +13,10 @@
         <script type="text/javascript" src="./js/cufon-replace.js"></script>
         <script type="text/javascript" src="./js/Myriad_Pro_300.font.js"></script>
         <script type="text/javascript" src="./js/Myriad_Pro_400.font.js"></script>
-        <!--[if lt IE 7]>
-        <link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
-        <script type="text/javascript" src="js/ie_png.js"></script>
-        <script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
-        <![endif]-->
-        <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+
     </head>
-    <body id="page5">
+    <body id="page2">
+        <iframe  name="iframe_ab"  style=" z-index: -1; border:none ; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%" ></iframe>
         <!-- START PAGE SOURCE -->
         <div class="wrap">
             <header>
@@ -25,7 +24,7 @@
                     <h1><a href="#">Student's site</a></h1>
                     <nav>
                         <ul>
-                            <li><a href="index.jsp" class="m1">Home</a></li>
+                             <li><a href="index.jsp" class="m1">Home</a></li>
                             <li><a href="Group.jsp" class="m2">Group</a></li>
                             <li><a href="Department.jsp" class="m3">Department</a></li>
                             <li class="current"><a href="Course.jsp" class="m4">Course</a></li>
@@ -47,11 +46,10 @@
                 <aside>
                     <h3>Categories</h3>
                     <ul class="categories">
-                        <li><span><a href="index.jsp">Create Course</a></span></li>
+                        <li><span><a href="beforeAddCourse">Create Course</a></span></li>
                         <li><span><a href="#">Update Course</a></span></li>
-                        <li><span><a href="#">Delete Course</a></span></li>
-                        <li><span><a href="#">Deactivate Course</a></span></li>
-                        <li  class="last"><span><a href="#">Add Lab To Course</a></span></li>
+                        <li><span><a href="#" >Delete Course</a></span></li>
+                        <li class="last"><span><a href="beforeDeactCourse">Deactivate Course</a></span></li>
                     </ul>
 
                     <h2>Fresh <span>News</span></h2>
@@ -67,7 +65,7 @@
                             Uis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae. </li>
                     </ul>
                 </aside>
-                <section id="content">
+               <section id="content">
                     <div id="banner">
                         <h2>Professional <span>Management System  <span>Since 2015</span></span></h2>
                     </div>
@@ -88,4 +86,5 @@
             </div>
         </footer>
 </html>
+
 

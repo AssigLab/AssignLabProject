@@ -3,14 +3,14 @@
     <head>
         <title>Create Department</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
-        <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
-        <script type="text/javascript" src="./js/jquery-1.4.2.min.js" ></script>
-        <script type="text/javascript" src="./js/cufon-yui.js"></script>
-        <script type="text/javascript" src="./js/cufon-replace.js"></script>
-        <script type="text/javascript" src="./js/Myriad_Pro_300.font.js"></script>
-        <script type="text/javascript" src="./js/Myriad_Pro_400.font.js"></script>
-        <script type="text/javascript" src="./js/script.js"></script>
+        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+        <script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+        <script type="text/javascript" src="js/cufon-yui.js"></script>
+        <script type="text/javascript" src="js/cufon-replace.js"></script>
+        <script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+        <script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
         <!--[if lt IE 7]>
         <link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
         <script type="text/javascript" src="js/ie_png.js"></script>
@@ -29,7 +29,7 @@
                         <ul>
                             <li><a href="index.jsp" class="m1">Home</a></li>
                             <li><a href="Group.jsp" class="m2">Group</a></li>
-                            <li  class="current"><a href="Department.jsp" class="m3">Department</a></li>
+                            <li class="current"><a href="Department.jsp" class="m3">Department</a></li>
                             <li><a href="Course.jsp" class="m4">Course</a></li>
                             <li><a href="User.jsp" class="m5">User</a></li>
                             <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li>
@@ -51,8 +51,9 @@
                     <ul class="categories">
                         <li><span><a href="AddDepart.jsp">Create Department</a></span></li>
                         <li><span><a href="beforeUpdateDepart">Update Department</a></span></li>
-                        <li><span><a href="#">Delete Department</a></span></li>
+                        <li><span><a href="Department.jsp">Delete Department</a></span></li>
                         <li  class="last"><span><a href="beforeDeactDepart">Deactivate Department</a></sp
+
                     </ul>
 
                     <h2>Fresh <span>News</span></h2>
@@ -70,7 +71,7 @@
                 </aside>
                 <section id="content">
                     <div class="inside" id="inside_form">
-                        <form class="m-t" role="form"  method="post" action="validAddDepart">
+                        <form class="m-t" role="form"  method="post" action="../validAddDepart">
                             <table class="form_table">
                                 <tr>
                                     <td colspan="3">
@@ -103,7 +104,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="span-col" id="des-span"></span>
+                                        <span class="span-col" id="des-span">*</span>
                                     </td>
                                 </tr>
                                 <tr>

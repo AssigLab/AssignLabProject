@@ -34,7 +34,7 @@ public class validAddDepart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String name = request.getParameter("name");
+        String name = request.getParameter("name");
         String desc = request.getParameter("description");
         if (!name.trim().equals("") && !desc.trim().equals("")) {
             System.out.println("HHHHH");

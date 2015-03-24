@@ -23,22 +23,22 @@ import org.hibernate.criterion.Restrictions;
 public class QueueDAO extends GenericDAO {
 
     public void shiftDeliveryQueue(Lab lab, Date date) {
-      /*  beginTransaction();
-        int labId = lab.getIdLab();
-
-        List<UsersDelivery> deliveryQueue = getSession()
-                .createCriteria(UsersDelivery.class)
-                .add(Restrictions.eq("lab.idLab", labId)).list();
-        Iterator it = deliveryQueue.iterator();
-
-        while (it.hasNext()) {
-            UsersDelivery user1 = (UsersDelivery) it.next();
-
-            user1.setToWhenDate(date);
-            update(user1);
-        }
-
-        getTransaction().commit();*/
+//        beginTransaction();
+//        int labId = lab.getIdLab();
+//
+//        List<UsersDelivery> deliveryQueue = getSession()
+//                .createCriteria(UsersDelivery.class)
+//                .add(Restrictions.eq("lab.idLab", labId)).list();
+//        Iterator it = deliveryQueue.iterator();
+//
+//        while (it.hasNext()) {
+//            UsersDelivery user1 = (UsersDelivery) it.next();
+//
+//            user1.setToWhenDate(date);
+//            update(user1);
+//        }
+//
+//        getTransaction().commit();
     }
 
     public void insertTraineeInDeliveryQueue(User user, Lab lab) {
@@ -99,32 +99,31 @@ public class QueueDAO extends GenericDAO {
      }*/
     public List<User> getTraineeInDeliveryQueue(Lab lab) {
 
-         List<User> users=new ArrayList();
-       /* beginTransaction();
-        int labId = lab.getIdLab();
-       
-        List<UsersDelivery> deliveryQueue = getSession()
-                .createCriteria(UsersDelivery.class)
-                .add(Restrictions.eq("lab.idLab", labId)).list();
-
-        Iterator it = deliveryQueue.iterator();
-
-        while (it.hasNext()) {
-            UsersDelivery user1 = (UsersDelivery) it.next();
+//        beginTransaction();
+//        int labId = lab.getIdLab();
+//        List<User> users=new ArrayList();
+//        List<UsersDelivery> deliveryQueue = getSession()
+//                .createCriteria(UsersDelivery.class)
+//                .add(Restrictions.eq("lab.idLab", labId)).list();
+//
+//        Iterator it = deliveryQueue.iterator();
+//
+//        while (it.hasNext()) {
+//            UsersDelivery user1 = (UsersDelivery) it.next();
 
           
 //            users.add(user1.getUser());
 //            System.out.println(user1.getUser().getName());
         
-        }
-
-        getTransaction().commit();*/
-        
-       return users ;
-        
+//        }
+//
+//        getTransaction().commit();
+//        
+//        return users ;
+        return null;
     }
     
-     
+      
     
-
+    
 }

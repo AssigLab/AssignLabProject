@@ -3,38 +3,72 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Update Department</title>
+        <title>Deactivate Course</title>
         <!--get All Active department from request --> 
         <c:set var="deptlist" value="${requestScope.allactiveDepart}"/>
 
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-        <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-        <script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
-        <script type="text/javascript" src="js/cufon-yui.js"></script>
-        <script type="text/javascript" src="js/cufon-replace.js"></script>
-        <script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
-        <script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
-        <!--  <script type="text/javascript" src="./js/script.js"></script>-->
+        <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
+        <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
+        <script type="text/javascript" src="./js/jquery-1.4.2.min.js" ></script>
+        <script type="text/javascript" src="./js/cufon-yui.js"></script>
+        <script type="text/javascript" src="./js/cufon-replace.js"></script>
+        <script type="text/javascript" src="./js/Myriad_Pro_300.font.js"></script>
+        <script type="text/javascript" src="./js/Myriad_Pro_400.font.js"></script>
 
         <script>
+            var xmlhttp = null;
+            var xmlhttp2 = null;
+            var xmlhttp3 = null;
             // when user select department , will assign department name , description in text field
             function refreshComp() {
                 var selVal = document.getElementById("deptsall").value;
                 if (selVal == "") {
                     document.getElementById("updateButton").hidden = true;
+                    document.getElementById("courseall").hidden = true;
                     document.getElementById("popup_txt1").value = "";
-                    document.getElementById("popup_txt2").value = "";
                 }
                 else if (selVal != "") {
-                    var stateArray = new Array();
-                    <c:forEach var="state" items="${deptlist}" varStatus="status">
-                            stateArray[${status.index}] = "${state.description}";
-                    </c:forEach>
-                    document.getElementById("updateButton").hidden = false;
+                    if (window.XMLHttpRequest)
+                    {// code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp2 = new XMLHttpRequest();
+                    }
+                    else if (window.ActiveXObject)
+                    {// code for IE6, IE5
+                        xmlhttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp2.onreadystatechange = handleStateChange;
+                    xmlhttp2.open("POST", "http://localhost:8080/AssignLabProject/getCoursesByDept?deptname=" + selVal, true);
+                    xmlhttp2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xmlhttp2.send(null);
+                }
+            }
+            function handleStateChange() {
+                if (xmlhttp2.readyState == 4) {
+                    var xmlDoc = xmlhttp2.responseXML;
+                    var courses = xmlDoc.getElementsByTagName("course");
+                    if (courses.length == 0) {
+                        document.getElementById("updateButton").hidden = true;
+                        document.getElementById("courseall").hidden = true;
+                        document.getElementById("popup_txt1").value = "";
+                    }
+                    for (var i = 0; i < courses.length; i++) {
+                        document.getElementById("courseall").hidden = false;
+                        o = courses[i];
+                        var coursename = o.childNodes[0];
+                        $('#courseall').append('<option value="' + coursename.childNodes[0].nodeValue + '" > ' + coursename.childNodes[0].nodeValue + '</option><br />');
+                    }
+                }
+            }
+
+            function refreshButton() {
+                var selVal = document.getElementById("courseall").value;
+                if (selVal == "") {
+                    document.getElementById("updateButton").hidden = true;
+                }
+                else {
                     document.getElementById("popup_txt1").value = selVal;
-                    document.getElementById("popup_txt2").innerHTML = stateArray[(document.getElementById("deptsall").selectedIndex) - 1];
+                    document.getElementById("updateButton").hidden = false;
                 }
             }
 
@@ -51,10 +85,10 @@
                         <ul>
                             <li><a href="index.jsp" class="m1">Home</a></li>
                             <li><a href="Group.jsp" class="m2">Group</a></li>
-                            <li class="current"><a href="Department.jsp" class="m3">Department</a></li>
-                            <li><a href="Course.jsp" class="m4">Course</a></li>
+                            <li><a href="Department.jsp" class="m3">Department</a></li>
+                            <li class="current"><a href="Course.jsp" class="m4">Course</a></li>
                             <li><a href="User.jsp" class="m5">User</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li> Out</button></li>
+                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li>
 
                         </ul>
                     </nav>
@@ -71,11 +105,10 @@
                 <aside>
                     <h3>Categories</h3>
                     <ul class="categories">
-                        <li><span><a href="AddDepart.jsp">Create Department</a></span></li>
-                        <li><span><a href="beforeUpdateDepart">Update Department</a></span></li>
-                        <li><span><a href="Department.jsp">Delete Department</a></span></li>
-                        <li  class="last"><span><a href="beforeDeactDepart">Deactivate Department</a></sp
-
+                        <li><span><a href="beforeAddCourse">Create Course</a></span></li>
+                        <li><span><a href="#">Update Course</a></span></li>
+                        <li><span><a href="#" >Delete Course</a></span></li>
+                        <li class="last"><span><a href="beforeDeactCourse">Deactivate Course</a></span></li>
                     </ul>
 
                     <h2>Fresh <span>News</span></h2>
@@ -93,11 +126,11 @@
                 </aside>
                 <section id="content">
                     <div class="inside" id="inside_form">
-                        <form class="m-t" role="form"  method="post" action="validUpdateDept">
+                        <form class="m-t" role="form"  method="post" action="validDeactCourse">
                             <table class="form_table">
                                 <tr>
                                     <td colspan="2">
-                                        <div id="form_header">Update Department</div>
+                                        <div id="form_header">Deactivate Course</div>
                                     </td>
                                     <td></td>
 
@@ -108,7 +141,7 @@
                                     </td>
                                     <td>
                                         <div>
-                                            <select class="form-control" name="AllDepart" onchange="refreshComp()" id="deptsall">
+                                            <select class="form-control"  style="width:250px" name="AllDepart" onchange="refreshComp()" id="deptsall">
                                                 <option selected="selected" value="" selected="selected">Choose...</option>
                                                 <c:forEach var="fieldItem" items="${deptlist}">
                                                     <option value="${fieldItem.name}">${fieldItem.name}</option>             
@@ -121,57 +154,62 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>
+                                        <h3>Select Course</h3>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <select class="form-control"  hidden style="width:250px" onchange="refreshButton()" name="AllCourse"  id="courseall">
+                                                <option selected="selected" value="" selected="selected">Choose...</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="span-col" id="create-span">${requestScope.chName}</span>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td colspan="2">
-                                        <button type="button" hidden class="btn btn-create block full-width m-b" id="updateButton" ><a id="link_btn" href="#openModal">Update</a></button>
+                                        <button type="button" hidden class="btn btn-create block full-width m-b" id="updateButton" ><a id="link_btn" href="#openModal">Deactivate</a></button>
                                     </td>
                                     <td></td>
                                 </tr>
                             </table>
-                        <!--Modal Dialog for Update group  -->
-                        <div id="openModal" class="modalDialog">
-                            <div>
+                            <!--Modal Dialog for Update group  -->
+                            <div id="openModal" class="modalDialog">
+                                <div>
 
-                                <a href="#close" title="Close" class="close">X</a>
+                                    <a href="#close" title="Close" class="close">X</a>
                                     <table class="popup-form">
                                         <tr>
                                             <td colspan="2">
-                                                <div id="popup_form_header">Update Department</div>
+                                                <div id="popup_form_header">Deactivate Course</div>
                                             </td>
                                             <td></td>
 
                                         </tr>
                                         <tr>
                                             <td>
-                                                <h3>Department Name</h3>
+                                                <h3>Course Name</h3>
                                             </td>
                                             <td>
                                                 <div class="form-group">
-                                                    <input type="text" style="width:250px" class="form-control" name="name"  id="popup_txt1" placeholder="Department Name" required="">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3>Department Description</h3>
-                                            </td>
-                                            <td>
-                                                <div class="form-group">
-                                                    <textarea class="form-control" style="width:250px" name="description" id="popup_txt2" placeholder="Department Description" required=""> </textarea>
+                                                    <input class="form-control" style="width:250px" id="popup_txt1" disabled=""/>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
                                                 <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Apply</button>
-                                                <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn2">Cancel</button> 
+                                                <button type="submit" class="btn btn-create block full-width m-b" onclick="return false;" id="popup_btn2">Cancel</button> 
                                             </td>
                                             <td>
 
                                             </td>
                                         </tr>
                                     </table>
+                                </div>
                             </div>
-                        </div>
                         </form>
                     </div>
                 </section>

@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Depatservlets;
 
+package Courseservlets;
+
+import Impl.CourseImpl;
 import Impl.DepartImpl;
+import Interfaces.CourseInt;
 import Interfaces.DepartInt;
-import Pojo.Department;
+import Pojo.Course;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -21,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JETS_ITI
  */
-public class validDeactDept extends HttpServlet {
+public class validDeactCourse extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,27 +37,29 @@ public class validDeactDept extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String SelectName = request.getParameter("AllDepart");
-        DepartInt Obj = new DepartImpl();
+        DepartInt Obj=new DepartImpl();
+        String SelectName = request.getParameter("AllCourse");
+        CourseInt cObj = new CourseImpl();
         if (!SelectName.trim().equals("")) {
-            Department deprtObj = new Department();
+            Course courseObj = new Course();
             // get id of department name
-            deprtObj.setName(SelectName);
-            List names = Obj.getDepartByName(deprtObj);
-            deprtObj=(Department) names.get(0);
-            deprtObj.setIsActive(1);
+            courseObj.setName(SelectName);
+            List names = cObj.getCourseByName(courseObj);
+            courseObj=(Course) names.get(0);
+            courseObj.setIsActive(1);
             if (names.size() > 0) {
-                Obj.update(deprtObj);
+                System.out.println("HJJJJUYY");
+                cObj.update(courseObj);
                 response.sendRedirect("SucessPage.jsp");
             } else {
+                System.out.println("HJJJJUYY");
                 request.setAttribute("allactiveDepart", Obj.GetAllDepartActive());
-                RequestDispatcher dispatcher1 = request.getRequestDispatcher("deactiveDepart.jsp");
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("deactiveCourse.jsp");
                 dispatcher1.forward(request, response);
             }
         } else {
-            response.sendRedirect("beforeDeactDepart");
+            response.sendRedirect("beforeDeactCourse");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

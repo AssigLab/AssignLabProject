@@ -3,15 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Depatservlets;
+package Courseservlets;
 
+import Impl.CourseImpl;
 import Impl.DepartImpl;
+import Interfaces.CourseInt;
 import Interfaces.DepartInt;
+import Pojo.Course;
 import Pojo.Department;
+import Pojo.Lab;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JETS_ITI
  */
-public class validDeactDept extends HttpServlet {
+public class getCoursesByDept extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,27 +39,57 @@ public class validDeactDept extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String SelectName = request.getParameter("AllDepart");
-        DepartInt Obj = new DepartImpl();
-        if (!SelectName.trim().equals("")) {
-            Department deprtObj = new Department();
-            // get id of department name
-            deprtObj.setName(SelectName);
-            List names = Obj.getDepartByName(deprtObj);
-            deprtObj=(Department) names.get(0);
-            deprtObj.setIsActive(1);
-            if (names.size() > 0) {
-                Obj.update(deprtObj);
-                response.sendRedirect("SucessPage.jsp");
-            } else {
-                request.setAttribute("allactiveDepart", Obj.GetAllDepartActive());
-                RequestDispatcher dispatcher1 = request.getRequestDispatcher("deactiveDepart.jsp");
-                dispatcher1.forward(request, response);
-            }
-        } else {
-            response.sendRedirect("beforeDeactDepart");
-        }
+        response.setContentType("text/xml");
+        String departname = request.getParameter("deptname");
+        // get department obj from name
+        DepartInt dObj = new DepartImpl();
+        Department deprtObj = new Department();
+        deprtObj.setName(departname);
+        List depts = dObj.getDepartByName(deprtObj);
+        System.out.println("dept name="+((Department) depts.get(0)).getName());
+        CourseInt cObj = new CourseImpl();
+        List courses = cObj.getAllActiveCourses((Department) depts.get(0));
+        System.out.println("course size="+courses.size());
+        PrintWriter out = response.getWriter();
+        out.print("<courses>");
+        for (int i = 0; i < courses.size(); i++) {
+            out.print("<course>");
+            out.print("<c_name>");
+            out.print(((Course) courses.get(i)).getName());
+            out.print("</c_name>");
+            out.print("<c_description>");
+            out.print(((Course) courses.get(i)).getDescription());
+            out.print("</c_description>");
+            // get all labs
+            out.print("<all_labs>");
+            Set labs = ((Course) courses.get(i)).getLabs();
+            // create an iterator
+            Iterator iterator = labs.iterator();
 
+            // check values
+            while (iterator.hasNext()) {
+                Lab Obj = (Lab) iterator.next();
+                out.print("<lab>");
+                out.print("<labID>");
+                out.print(Obj.getIdLab());
+                out.print("</labID>");
+                out.print("<labName>");
+                out.print(Obj.getName());
+                out.print("</labName>");
+                out.print("<labStart>");
+                out.print(Obj.getStartDate());
+                out.print("</labStart>");
+                out.print("<labEnd>");
+                out.print(Obj.getEndDate());
+                out.print("</labEnd>");
+                out.print("</lab>");
+            }
+
+            out.print("</all_labs>");
+            out.print("</course>");
+
+        }
+        out.print("</courses>");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
