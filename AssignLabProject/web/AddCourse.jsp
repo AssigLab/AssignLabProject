@@ -104,7 +104,7 @@
                     <h1><a href="#">Student's site</a></h1>
                     <nav>
                         <ul>
-                            <li><a href="index.jsp" class="m1">Home</a></li>
+                            <li><a href="Home.jsp" class="m1">Home</a></li>
                             <li><a href="Group.jsp" class="m2">Group</a></li>
                             <li><a href="Department.jsp" class="m3">Department</a></li>
                             <li class="current"><a href="Course.jsp" class="m4">Course</a></li>
