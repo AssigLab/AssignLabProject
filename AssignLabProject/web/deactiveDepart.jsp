@@ -93,7 +93,7 @@
                             <table class="form_table">
                                 <tr>
                                     <td colspan="2">
-                                        <div id="form_header">Update Department</div>
+                                        <div id="form_header">Deactivate Department</div>
                                     </td>
                                     <td></td>
 
@@ -131,7 +131,7 @@
                                     <table class="popup-form">
                                         <tr>
                                             <td colspan="2">
-                                                <div id="popup_form_header">Update Department</div>
+                                                <div id="popup_form_header">Deactivate Department</div>
                                             </td>
                                             <td></td>
 
@@ -148,7 +148,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Apply</button>
+                                                <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Confirm</button>
                                                 <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn2">Cancel</button> 
                                             </td>
                                             <td>

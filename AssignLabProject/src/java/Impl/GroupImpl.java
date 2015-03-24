@@ -1,5 +1,6 @@
-
+package Impl;
 import DAO.GroupDAO;
+import Interfaces.GroupInt;
 import Pojo.Group;
 import Pojo.User;
 import java.util.List;
@@ -15,9 +16,15 @@ public class GroupImpl implements GroupInt {
 
 	private GroupDAO groupDAO;
 
+    public GroupImpl() {
+        groupDAO =new GroupDAO();
+    }
+        
+
     @Override
     public int create(Group obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        groupDAO.insert(obj);
+        return 1;
     }
 
     @Override

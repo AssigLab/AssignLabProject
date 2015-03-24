@@ -3,8 +3,7 @@ package DAO;
 import Pojo.Group;
 import Pojo.User;
 import java.util.List;
-
-
+import org.hibernate.Query;
 
 /**
  * @author Sara
@@ -13,76 +12,95 @@ import java.util.List;
  */
 public class GroupDAO extends GenericDAO {
 
-	public GroupDAO(){
+    public GroupDAO() {
 
-	}
+    }
 
-	public void finalize() throws Throwable {
+    public void finalize() throws Throwable {
 
-	}
+    }
 
-	/**
-	 * 
-	 * @param u
-	 */
-	public int deactivate(User u){
-		return 0;
-	}
+    /**
+     *
+     * @param u
+     */
+    public int update(Group group) {
+        // begin transaction
+        beginTransaction();
+        merge(group);
+        getTransaction().commit();
+        return 1;
+    }
 
-	/**
-	 * 
-	 * @param u
-	 */
-	public int delete(User u){
-		return 0;
-	}
+    /**
+     *
+     * @param u
+     */
+    public int delete(Group group) {
+        // begin transaction
+        beginTransaction();
+        delete(group);
+        getTransaction().commit();
+        return 1;
+    }
 
-	/**
-	 * 
-	 * @param u
-	 */
-	public int insert(User u){
-		return 0;
-	}
+    /**
+     *
+     * @param u
+     */
+    public int insert(Group group) {
+        // begin transaction
+        beginTransaction();
+        persist(group);
+        getTransaction().commit();
+        return 0;
+    }
 
-	public List selectAllActiveGroup(){
-		return null;
-	}
+    public List selectAllActiveGroup() {
+        String hql = "FROM group g where g.isActive=0";
+        Query query = getSession().createQuery(hql);
+        return query.list();
 
-	public List selectAllDeactiveGroup(){
-		return null;
-	}
+    }
 
-	/**
-	 * 
-	 * @param Obj
-	 */
-	public List selectOneActiveGroup(Group Obj){
-		return null;
-	}
+    public List selectAllDeactiveGroup() {
+        String hql = "FROM group g where g.isActive=1";
+        Query query = getSession().createQuery(hql);
+        return query.list();
+    }
 
-	/**
-	 * 
-	 * @param Obj
-	 */
-	public List selectOneDeactiveGroup(Group Obj){
-		return null;
-	}
+    /**
+     *
+     * @param Obj
+     */
+    public List selectOneGroup(Group group) {
+        String hql = "FROM group where g.idDepartment=" + group.getIdGroup();
+        Query query = getSession().createQuery(hql);
+        return query.list();
+    }
 
-	/**
-	 * 
-	 * @param Obj
-	 */
-	public List selectUserGroups(User Obj){
-		return null;
-	}
+    /**
+     *
+     * @param Obj
+     */
+    public List selectOneDeactiveGroup(Group Obj) {
+        return null;
+    }
 
-	/**
-	 * 
-	 * @param u
-	 */
-	public int update(User u){
-		return 0;
-	}
+    /**
+     *
+     * @param Obj
+     */
+    public List selectUserGroups(User Obj) {
+        return null;
+    }
+
+    /**
+     *
+     * @param u
+     */
+//    public int update(User u) {
+//        return 0;
+//    }
 
 }

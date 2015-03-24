@@ -72,7 +72,7 @@
                 </aside>
                 <section id="content">
                     <div class="inside" id="inside_form">
-                        <form class="m-t" role="form" action="index.jsp">
+                        <form class="m-t" role="form" action="validateGroupName" method="post">
                             <table class="form_table">
                                 <tr>
                                     <td colspan="3">
@@ -87,7 +87,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="GroupName" required="">
+                                            <input type="text" class="form-control" placeholder="GroupName" name="name" required="">
                                         </div>
                                     </td>
                                     <td>
@@ -100,7 +100,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
-                                            <textarea class="form-control" placeholder="GroupDescription" required=""> </textarea>
+                                            <textarea class="form-control" placeholder="GroupDescription" required="" name="desc"> </textarea>
 
                                         </div>
                                     </td>
@@ -110,7 +110,8 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <button type="button" class="btn btn-create block full-width m-b" ><a id="link_btn" href="#openModal">Create</a></button>
+                                        <button type="submit" class="btn btn-create block full-width m-b" >Create</button>
+                                        <!-- <a id="link_btn" href="#openModal">Create</a> -->
 
                                     </td>
                                     <td></td>

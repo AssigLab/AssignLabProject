@@ -103,7 +103,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="span-col" id="des-span">*</span>
+                                        <span class="span-col" id="des-span"></span>
                                     </td>
                                 </tr>
                                 <tr>
