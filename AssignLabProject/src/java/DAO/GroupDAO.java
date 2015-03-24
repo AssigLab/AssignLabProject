@@ -57,7 +57,7 @@ public class GroupDAO extends GenericDAO {
     }
 
     public List selectAllActiveGroup() {
-        String hql = "FROM group g where g.isActive=0";
+        String hql = "FROM Group g where g.isActive=0";
         Query query = getSession().createQuery(hql);
         return query.list();
 
@@ -74,8 +74,19 @@ public class GroupDAO extends GenericDAO {
      * @param Obj
      */
     public List selectOneGroup(Group group) {
-        String hql = "FROM group where g.idDepartment=" + group.getIdGroup();
-        Query query = getSession().createQuery(hql);
+        /* String hql = "FROM group where g.idGroup=" + group.getIdGroup();
+         Query query = getSession().createQuery(hql);
+         return query.list();*/
+        Query query = null;
+        String hql = null;
+        if (group.getIdGroup() == null) {
+            System.out.println("group id null");
+            hql = "FROM Group g where g.name='" + group.getName() + "'";
+            query = getSession().createQuery(hql);
+        } else {
+            hql = "FROM Group g where g.idGroup <> " + group.getIdGroup() + " and g.name='" + group.getName() + "'";
+            query = getSession().createQuery(hql);
+        }
         return query.list();
     }
 
@@ -102,5 +113,4 @@ public class GroupDAO extends GenericDAO {
 //    public int update(User u) {
 //        return 0;
 //    }
-
 }

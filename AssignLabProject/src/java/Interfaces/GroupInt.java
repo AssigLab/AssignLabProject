@@ -39,14 +39,14 @@ public interface GroupInt {
 	 * 
 	 * @param obj
 	 */
-	public List<Group> getAllGroupActive(Group obj);
+	public List<Group> getAllGroupActive();
 	
 
 	/**
 	 * 
 	 * @param obj
 	 */
-	public List<Group> getAllGroupDeactive(Group obj);
+	public List<Group> getAllGroupDeactive();
 
 	/**
 	 * 
@@ -72,6 +72,8 @@ public interface GroupInt {
 	 * @param obj
 	 */
 	public int update(Group obj);
+        
+        public abstract List getGroupByName(Group Obj);
 		
 
 }

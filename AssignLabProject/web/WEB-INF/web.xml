@@ -24,6 +24,14 @@
         <servlet-name>validateGroupName</servlet-name>
         <servlet-class>GroupServlets.validateGroupName</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getAllGroups</servlet-name>
+        <servlet-class>GroupServlets.getAllGroups</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>validateNameUpdateGroup</servlet-name>
+        <servlet-class>GroupServlets.validateNameUpdateGroup</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>validAddDepart</servlet-name>
         <url-pattern>/validAddDepart</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>validateGroupName</servlet-name>
         <url-pattern>/validateGroupName</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getAllGroups</servlet-name>
+        <url-pattern>/getAllGroups</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>validateNameUpdateGroup</servlet-name>
+        <url-pattern>/validateNameUpdateGroup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

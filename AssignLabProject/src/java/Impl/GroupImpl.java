@@ -38,13 +38,13 @@ public class GroupImpl implements GroupInt {
     }
 
     @Override
-    public List<Group> getAllGroupActive(Group obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Group> getAllGroupActive() {
+        return groupDAO.selectAllActiveGroup();
     }
 
     @Override
-    public List<Group> getAllGroupDeactive(Group obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Group> getAllGroupDeactive() {
+        return groupDAO.selectAllActiveGroup();
     }
 
     @Override
@@ -64,7 +64,13 @@ public class GroupImpl implements GroupInt {
 
     @Override
     public int update(Group obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        groupDAO.update(obj);
+        return 1;
+    }
+
+    @Override
+    public List getGroupByName(Group Obj) {
+        return groupDAO.selectOneGroup(Obj);
     }
 
 	
