@@ -1,7 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Deactivate Group</title>
+        <c:set var="grouplist" value="${requestScope.allactiveGroups}"/>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
         <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
@@ -16,6 +19,28 @@
         <script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
         <![endif]-->
         <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+        <script>
+
+            function refreshComp1() {
+                var selVal = document.getElementById("groupselection").value;
+                if (selVal == "") {
+                    document.getElementById("updateButton").hidden = true;
+                    document.getElementById("popup_txt1").value = "";
+                    document.getElementById("popup_txt2").value = "";
+                }
+                else if (selVal != "") {
+
+                    var stateArray = new Array();
+            <c:forEach var = "state" items = "${grouplist}" varStatus = "status" >
+                    stateArray[${status.index}] = "${state.description}";
+            </c:forEach>
+                    document.getElementById("updateButton").hidden = false;
+                    document.getElementById("popup_txt1").value = selVal;
+                    document.getElementById("popup_txt2").innerHTML = stateArray[(document.getElementById("groupselection").selectedIndex) - 1];
+                }
+            }
+
+        </script>
     </head>
     <body id="page2">
         <iframe  name="iframe_ab"  style=" z-index: -1; border:none ; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%" ></iframe>
@@ -48,10 +73,10 @@
                 <aside>
                     <h3>Categories</h3>
                     <ul class="categories">
-                        <li><span><a href="createGroup.jsp" >Create Group</a></span></li>
-                        <li><span><a href="updateGroup.jsp" >Update Group</a></span></li>
+                         <li><span><a href="createGroup.jsp" >Create Group</a></span></li>
+                        <li><span><a href="getAllGroupsForUpdate" >Update Group</a></span></li>
                         <li><span><a href="deleteGroup.jsp" >Delete Group</a></span></li>
-                        <li><span><a href="deactivateGroup.jsp" >Deactivate Group</a></span></li>
+                        <li><span><a href="getAllGroupsForDeactive" >Deactivate Group</a></span></li>
                         <li><span><a href="assignstufftoGroup.jsp" >Assign Stuff To Group</a></span></li>
                         <li><span><a href="assigncoursetoGroup.jsp" >Assign Course To Group</a></span></li>
                         <li class="last"><span><a href="assigntraineetoGroup.jsp" >Assign Trainee To Group</a></span></li>
@@ -72,11 +97,11 @@
                 </aside>
                 <section id="content">
                     <div class="inside" id="inside_form">
-                        <form class="m-t" role="form" action="index.jsp">
+                        <form class="m-t" role="form"  method="post" action="validateNameDeactivateGroup">
                             <table class="form_table">
                                 <tr>
                                     <td colspan="2">
-                                        <div id="form_header">Deactivate Group</div>
+                                        <div id="form_header">Deactivate Groups</div>
                                     </td>
                                     <td></td>
 
@@ -87,33 +112,30 @@
                                     </td>
                                     <td>
                                         <div>
-
-                                            <select class="form-control" >
-                                                <option value="EWD">EWD</option>
-                                                <option value="SD">SD</option>
-                                                <option value="MAD">MAD</option>
+                                            <select class="form-control" name="AllGroups" onchange="refreshComp1()" id="groupselection">
+                                                <option selected="selected" value="" selected="selected">Choose...</option>
+                                                <c:forEach var="fieldItem" items="${grouplist}">
+                                                    <option value="${fieldItem.name}">${fieldItem.name}</option>             
+                                                </c:forEach>
                                             </select>
-
                                         </div>
-
-
+                                    </td>
+                                    <td>
+                                        <span class="span-col" id="create-span">${requestScope.chName}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <button type="button" class="btn btn-create block full-width m-b" ><a id="link_btn" href="#openModal">Deactivate</a></button>
-
+                                        <button type="button" hidden class="btn btn-create block full-width m-b" id="updateButton" ><a id="link_btn" href="#openModal">Deactivate</a></button>
                                     </td>
                                     <td></td>
                                 </tr>
                             </table>
-                        </form>
-                        <!--Modal Dialog for Update group  -->
-                        <div id="openModal" class="modalDialog">
-                            <div>
+                            <!--Modal Dialog for Update group  -->
+                            <div id="openModal" class="modalDialog">
+                                <div>
 
-                                <a href="#close" title="Close" class="close">X</a>
-                                <form class="m-t" role="form" action="index.jsp">
+                                    <a href="#close" title="Close" class="close">X</a>
                                     <table class="popup-form">
                                         <tr>
                                             <td colspan="2">
@@ -128,7 +150,7 @@
                                             </td>
                                             <td>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control"  id="popup_txt1" placeholder="GroupName" readonly="" >
+                                                    <input type="text" class="form-control" name="name"  id="popup_txt1" placeholder="Group Name" readonly="">
                                                 </div>
                                             </td>
                                         </tr>
@@ -138,24 +160,23 @@
                                             </td>
                                             <td>
                                                 <div class="form-group">
-                                                    <textarea class="form-control" id="popup_txt2" placeholder="GroupDescription" readonly=""> </textarea>
-
+                                                    <textarea class="form-control" name="description" id="popup_txt2" placeholder="Group Description" readonly=""> </textarea>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Confirm</button>
-                                                <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn2"><a id="link_btn" href="#close" >Cancel</a></button> 
+                                                <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Apply</button>
+                                                <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn2">Cancel</button> 
                                             </td>
                                             <td>
 
                                             </td>
                                         </tr>
                                     </table>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </section>
             </div>

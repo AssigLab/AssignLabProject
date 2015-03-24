@@ -25,12 +25,20 @@
         <servlet-class>GroupServlets.validateGroupName</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>getAllGroups</servlet-name>
-        <servlet-class>GroupServlets.getAllGroups</servlet-class>
+        <servlet-name>getAllGroupsForUpdate</servlet-name>
+        <servlet-class>GroupServlets.getAllGroupsForUpdate</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>validateNameUpdateGroup</servlet-name>
         <servlet-class>GroupServlets.validateNameUpdateGroup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getAllGroupsForDeactive</servlet-name>
+        <servlet-class>GroupServlets.getAllGroupsForDeactive</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>validateNameDeactivateGroup</servlet-name>
+        <servlet-class>GroupServlets.validateNameDeactivateGroup</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>validAddDepart</servlet-name>
@@ -57,12 +65,20 @@
         <url-pattern>/validateGroupName</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>getAllGroups</servlet-name>
-        <url-pattern>/getAllGroups</url-pattern>
+        <servlet-name>getAllGroupsForUpdate</servlet-name>
+        <url-pattern>/getAllGroupsForUpdate</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>validateNameUpdateGroup</servlet-name>
         <url-pattern>/validateNameUpdateGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getAllGroupsForDeactive</servlet-name>
+        <url-pattern>/getAllGroupsForDeactive</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>validateNameDeactivateGroup</servlet-name>
+        <url-pattern>/validateNameDeactivateGroup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

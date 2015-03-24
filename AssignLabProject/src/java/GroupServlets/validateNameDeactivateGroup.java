@@ -5,13 +5,13 @@
  */
 package GroupServlets;
 
-import Impl.DepartImpl;
 import Impl.GroupImpl;
-import Interfaces.DepartInt;
 import Interfaces.GroupInt;
+import Pojo.Group;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author it
  */
-public class getAllGroups extends HttpServlet {
+public class validateNameDeactivateGroup extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,11 +34,34 @@ public class getAllGroups extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String SelectName = request.getParameter("AllGroups");
+        String name = request.getParameter("name");
+        String desc = request.getParameter("description");
         GroupInt groupInt = new GroupImpl();
-        List l = groupInt.getAllGroupActive();
-        System.out.println("size of list of groups" + l.size());
-        request.setAttribute("allactiveGroups", l);
-        getServletContext().getRequestDispatcher("/updateGroup.jsp").forward(request, response);
+        if (!name.trim().equals("") && !desc.trim().equals("")) {
+            Group group = new Group();
+            // get id of group name
+            group.setName(SelectName);
+            List names = groupInt.getGroupByName(group);
+            group.setIdGroup(((Group) names.get(0)).getIdGroup());
+            group.setName(name);
+            group.setDescription(desc);
+            group.setIsActive(1);
+
+            List l = groupInt.getGroupByName(group);
+            if (l.size() > 0) {
+                request.setAttribute("allactiveGroups", groupInt.getAllGroupActive());
+                request.setAttribute("chName", "Name exist");
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("/deactivateGroup.jsp");
+                dispatcher1.forward(request, response);
+            } else {
+                groupInt.deactivate(group);
+                response.sendRedirect("SucessPage.jsp");
+            }
+        } else {
+            response.sendRedirect("getAllGroups");
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

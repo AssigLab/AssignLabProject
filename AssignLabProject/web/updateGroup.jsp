@@ -22,7 +22,7 @@
     <![endif]-->
     <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
     <script>
-        // when user select department , will assign department name , description in text field
+       
         function refreshComp1() {
             var selVal = document.getElementById("groupselection").value;
             if (selVal == "") {
@@ -75,13 +75,13 @@
             <aside>
                 <h3>Categories</h3>
                 <ul class="categories">
-                    <li><span><a href="createGroup.jsp" >Create Group</a></span></li>
-                    <li><span><a href="getAllGroups" >Update Group</a></span></li>
-                    <li><span><a href="deleteGroup.jsp" >Delete Group</a></span></li>
-                    <li><span><a href="deactivateGroup.jsp" >Deactivate Group</a></span></li>
-                    <li><span><a href="assignstufftoGroup.jsp" >Assign Stuff To Group</a></span></li>
-                    <li><span><a href="assigncoursetoGroup.jsp" >Assign Course To Group</a></span></li>
-                    <li class="last"><span><a href="assigntraineetoGroup.jsp" >Assign Trainee To Group</a></span></li>
+                     <li><span><a href="createGroup.jsp" >Create Group</a></span></li>
+                        <li><span><a href="getAllGroupsForUpdate" >Update Group</a></span></li>
+                        <li><span><a href="deleteGroup.jsp" >Delete Group</a></span></li>
+                        <li><span><a href="getAllGroupsForDeactive" >Deactivate Group</a></span></li>
+                        <li><span><a href="assignstufftoGroup.jsp" >Assign Stuff To Group</a></span></li>
+                        <li><span><a href="assigncoursetoGroup.jsp" >Assign Course To Group</a></span></li>
+                        <li class="last"><span><a href="assigntraineetoGroup.jsp" >Assign Trainee To Group</a></span></li>
                 </ul>
 
                 <h2>Fresh <span>News</span></h2>
@@ -110,7 +110,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h3>Select Department</h3>
+                                    <h3>Select Group</h3>
                                 </td>
                                 <td>
                                     <div>

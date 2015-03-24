@@ -29,7 +29,8 @@ public class GroupImpl implements GroupInt {
 
     @Override
     public int deactivate(Group obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        groupDAO.update(obj);
+        return 1;
     }
 
     @Override

@@ -50,9 +50,9 @@
                     <h3>Categories</h3>
                     <ul class="categories">
                         <li><span><a href="createGroup.jsp" >Create Group</a></span></li>
-                        <li><span><a href="updateGroup.jsp" >Update Group</a></span></li>
+                        <li><span><a href="getAllGroupsForUpdate" >Update Group</a></span></li>
                         <li><span><a href="deleteGroup.jsp" >Delete Group</a></span></li>
-                        <li><span><a href="deactivateGroup.jsp" >Deactivate Group</a></span></li>
+                        <li><span><a href="getAllGroupsForDeactive" >Deactivate Group</a></span></li>
                         <li><span><a href="assignstufftoGroup.jsp" >Assign Stuff To Group</a></span></li>
                         <li><span><a href="assigncoursetoGroup.jsp" >Assign Course To Group</a></span></li>
                         <li class="last"><span><a href="assigntraineetoGroup.jsp" >Assign Trainee To Group</a></span></li>

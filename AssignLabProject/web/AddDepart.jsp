@@ -49,10 +49,10 @@
                 <aside>
                     <h3>Categories</h3>
                     <ul class="categories">
-                         <li><span><a href="AddDepart.jsp">Create Department</a></span></li>
+                        <li><span><a href="AddDepart.jsp">Create Department</a></span></li>
                         <li><span><a href="beforeUpdateDepart">Update Department</a></span></li>
-                        <li><span><a href="deleteGroup.jsp" >Delete Department</a></span></li>
-                        <li class="last"><span><a href="beforeDeactDepart">Deactivate Department</a></span></li>
+                        <li><span><a href="#">Delete Department</a></span></li>
+                        <li  class="last"><span><a href="beforeDeactDepart">Deactivate Department</a></sp
                     </ul>
 
                     <h2>Fresh <span>News</span></h2>
