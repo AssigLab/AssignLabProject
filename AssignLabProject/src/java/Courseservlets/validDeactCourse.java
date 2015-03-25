@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Courseservlets;
 
 import Impl.CourseImpl;
@@ -37,7 +36,7 @@ public class validDeactCourse extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DepartInt Obj=new DepartImpl();
+        DepartInt Obj = new DepartImpl();
         String SelectName = request.getParameter("AllCourse");
         CourseInt cObj = new CourseImpl();
         if (!SelectName.trim().equals("")) {
@@ -45,16 +44,17 @@ public class validDeactCourse extends HttpServlet {
             // get id of department name
             courseObj.setName(SelectName);
             List names = cObj.getCourseByName(courseObj);
-            courseObj=(Course) names.get(0);
+            courseObj = (Course) names.get(0);
             courseObj.setIsActive(1);
             if (names.size() > 0) {
                 System.out.println("HJJJJUYY");
                 cObj.update(courseObj);
-                response.sendRedirect("SucessPage.jsp");
+                request.setAttribute("SuccessOp", "Successful");
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("/deactiveCourse.jsp");
+                dispatcher1.forward(request, response);
             } else {
-                System.out.println("HJJJJUYY");
                 request.setAttribute("allactiveDepart", Obj.GetAllDepartActive());
-                RequestDispatcher dispatcher1 = request.getRequestDispatcher("deactiveCourse.jsp");
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("/deactiveCourse.jsp");
                 dispatcher1.forward(request, response);
             }
         } else {

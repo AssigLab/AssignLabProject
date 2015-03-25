@@ -1,13 +1,12 @@
 package Impl;
 
-
 import DAO.CourseDAO;
+import DAO.GenericDAO;
 import Interfaces.CourseInt;
 import Pojo.Course;
 import Pojo.Department;
+import Pojo.Group;
 import java.util.List;
-
-
 
 /**
  * @author Sara
@@ -34,17 +33,17 @@ public class CourseImpl implements CourseInt {
 
     @Override
     public void delete(Course courseObj) {
-       Obj.Delete(courseObj);
+        Obj.Delete(courseObj);
     }
 
     @Override
     public List getAllActiveCourses(Department dept) {
-       return Obj.selectAllActiveCourse(dept);
+        return Obj.selectAllActiveCourse(dept);
     }
 
     @Override
     public List getAllDeactiveCourses(Department dept) {
-       return Obj.selectAllDeactiveCourse(dept);
+        return Obj.selectAllDeactiveCourse(dept);
     }
 
     @Override
@@ -56,10 +55,21 @@ public class CourseImpl implements CourseInt {
     public void update(Course courseObj) {
         Obj.Update(courseObj);
     }
-    
+
     @Override
     public List getCourseByName(Course courseObj) {
         return Obj.SelectOneByName(courseObj);
     }
+
+        @Override
+    public List getAllCoursesAssignedToGroup(Group group) {
+        GenericDAO gdao = new GenericDAO();
+        gdao.beginTransaction();
+
+        CourseDAO course = new CourseDAO();
+
+        return course.selectAllActiveCourse(group);
+    }
+
 
 }

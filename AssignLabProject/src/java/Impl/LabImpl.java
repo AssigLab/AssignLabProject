@@ -1,5 +1,6 @@
 package Impl;
 
+import DAO.GenericDAO;
 import DAO.LabDAO;
 import Interfaces.LabInt;
 import Pojo.Course;
@@ -14,38 +15,69 @@ import java.util.List;
  * @created 19-Mar-2015 10:55:48 AM
  */
 public class LabImpl implements LabInt {
+    
+    public LabDAO Obj;
 
-	public LabDAO m_LabDAO;
-
-    public LabImpl(LabDAO m_LabDAO) {
-        this.m_LabDAO = m_LabDAO;
-    }
-
-        
-    @Override
-    public int create(Lab obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public LabImpl() {
+        this.Obj = new LabDAO();
     }
 
     @Override
-    public int delete(Lab obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void create(Lab labobj) {
+        Obj.insert(labobj);
     }
 
+    @Override
+    public void delete(Lab labobj) {
+        Obj.delete(labobj);
+    }
+
+    @Override
+    public List getAllLabActive(Course courseObj) {
+        return Obj.selectAllLabActive(courseObj);
+    }
+
+    @Override
+    public List getAllLabDeact(Course courseObj) {
+        return Obj.selectAllLabDeact(courseObj);
+    }
+
+    @Override
+    public List getOneLab(Lab labobj) {
+        return Obj.selectOneLab(labobj);
+    }
+
+    @Override
+    public void update(Lab labobj) {
+        Obj.update(labobj);
+    }
+
+    //Nasser
     @Override
     public List getAllLab(Course obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        GenericDAO gdao = new GenericDAO();
+        gdao.beginTransaction();
+        
+        LabDAO lab = new LabDAO();
+        
+        return lab.selectAllLab(obj);
     }
-
-    @Override
-    public List getOneLab(Lab obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    
+    public void update_staff(Lab obj) {
+        LabDAO lab = new LabDAO();
+        lab.update_staff(obj);
     }
-
-    @Override
-    public int update(Lab obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public void updateEnabled_staff(Lab obj) {
+        LabDAO lab = new LabDAO();
+        lab.updateEnabled_staff(obj);
     }
-
-	
+    
+    public void shiftqueue(Lab current, Lab next) {
+        LabDAO lab = new LabDAO();
+        lab.shiftqueue(current, next);
+    }
+    
 }

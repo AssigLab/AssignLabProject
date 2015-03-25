@@ -51,7 +51,7 @@ public class validAddCourse extends HttpServlet {
         String name = request.getParameter("name");
         String desc = request.getParameter("description");
         String deptname = request.getParameter("AllDepart");
-        String [] labs=request.getParameterValues("labs");
+        String[] labs = request.getParameterValues("labs");
         if (!name.trim().equals("") && !desc.trim().equals("") && !deptname.trim().equals("")) {
 
             PrintWriter out = response.getWriter();
@@ -62,24 +62,25 @@ public class validAddCourse extends HttpServlet {
             deprtObj.setName(deptname);
             List depts = dObj.getDepartByName(deprtObj);
 
-            HashSet allLabs=new HashSet();
-            for(int i=0;i<labs.length;i++){
-                StringTokenizer f=new StringTokenizer(labs[i], ",");
-                ArrayList<String> splitting=new ArrayList<>();
-                while(f.hasMoreTokens()){
+            HashSet allLabs = new HashSet();
+            for (int i = 0; i < labs.length; i++) {
+                StringTokenizer f = new StringTokenizer(labs[i], ",");
+                ArrayList<String> splitting = new ArrayList<>();
+                while (f.hasMoreTokens()) {
                     splitting.add(f.nextToken());
                 }
-                Lab labObj=new Lab();
+                Lab labObj = new Lab();
                 DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 try {
-                    Date d2 = df2.parse(splitting.get(0).trim()+":00");
+                    Date d2 = df2.parse(splitting.get(0).trim() + ":00");
                     labObj.setStartDate(d2);
-                    d2 = df2.parse(splitting.get(1).trim()+":00");
+                    d2 = df2.parse(splitting.get(1).trim() + ":00");
                     labObj.setEndDate(d2);
-                    
-                    labObj.setName("lab"+i+1);
-                    labObj.setDescription("");
+
+                    labObj.setName("lab" + i + 1);
+                    labObj.setDescription("close");
                     labObj.setEnableUpload(0);
+                    labObj.setUploadEndDate(d2);
                     labObj.setUploadEndDate(d2);
                     allLabs.add(labObj);
                 } catch (ParseException ex) {
@@ -94,17 +95,20 @@ public class validAddCourse extends HttpServlet {
             courseObj.setIsActive(0);
             courseObj.setDepartment((Department) depts.get(0));
             courseObj.setLabs(allLabs);
-            
+
             // check course name is duplicate
             List courses = cObj.getCourseByName(courseObj);
             if (courses.size() > 0) {
                 System.out.println("HHHHH22");
                 request.setAttribute("chName", "Name exist");
+                
                 RequestDispatcher dispatcher1 = request.getRequestDispatcher("/AddCourse.jsp");
                 dispatcher1.forward(request, response);
             } else {
+                request.setAttribute("SuccessOp", "Successful");
                 cObj.create(courseObj);
-                response.sendRedirect("SucessPage.jsp");
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("/AddCourse.jsp");
+                dispatcher1.forward(request, response);
             }
 
         } else {
@@ -126,17 +130,26 @@ public class validAddCourse extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String name = request.getParameter("name");
+        String selectCourse = request.getParameter("selectCourse");
         PrintWriter out = response.getWriter();
-        if(!name.trim().equals("")){
-        CourseInt cObj = new CourseImpl();
+        if (!name.trim().equals("")) {
+            CourseInt cObj = new CourseImpl();
             Course courseObj = new Course();
-            courseObj.setName(name);
-            // check course name is duplicate
-            List courses = cObj.getCourseByName(courseObj);
-            if(courses.size()>0){
-                out.println("Name exist");
+            if (selectCourse!=null) {
+                courseObj.setName(selectCourse);
+                // check course name is duplicate
+                List l = cObj.getCourseByName(courseObj);
+                courseObj.setName(name);
+                courseObj.setIdCourse(((Course) l.get(0)).getIdCourse());
+            } else {
+                courseObj.setName(name);
             }
-            else{
+            List courses = cObj.getCourseByName(courseObj);
+            if (courses.size() > 0) {
+                System.out.println("EXIST");
+                out.println("Name exist");
+            } else {
+                System.out.println("NOT EXIST");
                 out.println("");
             }
         }

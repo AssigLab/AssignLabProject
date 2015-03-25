@@ -28,12 +28,13 @@ body {
 	width: 350px;
 	margin:auto;
 	position: relative;
+        margin-top: 100px;
 }
 
 #wrappertop {
 	background:url(../loginimages/wrapper_top.png) no-repeat;
-	height:22px;
-        margin-top: 70px;
+	height:21px;
+
 }
 
 #wrappermiddle {
@@ -47,7 +48,7 @@ body {
 }
 
 #wrapper h2 {
-	margin-left:20px;
+	margin-left:130px;
 	font-size:20px;
 	font-weight:bold;
 	font-family:Myriad Pro;
@@ -57,7 +58,7 @@ body {
 }
 
 #username_input {
-	margin-left:25px;
+	margin-left:28px;
 	position:absolute;
 	width:300;
 	height:50px;
@@ -106,7 +107,7 @@ body {
 }
 
 #password_input {
-	margin-left:25px;
+	margin-left:28px;
 	position:absolute;
 	width:300;
 	height:50px;

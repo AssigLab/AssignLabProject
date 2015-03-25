@@ -53,5 +53,8 @@ public interface CourseInt {
     public void update(Course crs);
 
     public List getCourseByName(Course crs);
+    
+
+    public List getAllCoursesAssignedToGroup(Group group);
 
 }

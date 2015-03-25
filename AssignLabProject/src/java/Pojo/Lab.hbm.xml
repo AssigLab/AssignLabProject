@@ -17,16 +17,16 @@
         <property name="description" type="string">
             <column name="description" length="45" not-null="true" />
         </property>
-        <property name="startDate" type="date">
+        <property name="startDate" type="timestamp">
             <column name="start_date" length="10" not-null="true" />
         </property>
-        <property name="endDate" type="date">
+        <property name="endDate" type="timestamp">
             <column name="end_date" length="10" not-null="true" />
         </property>
         <property name="enableUpload" type="int">
             <column name="enable_upload" not-null="true" />
         </property>
-        <property name="uploadEndDate" type="date">
+        <property name="uploadEndDate" type="timestamp">
             <column name="upload_end_date" length="10" not-null="true" />
         </property>
         <set name="userAssistances" table="user_assistance" inverse="true" lazy="true" fetch="select">

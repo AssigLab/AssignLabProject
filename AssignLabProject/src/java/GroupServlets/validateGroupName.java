@@ -55,7 +55,7 @@ public class validateGroupName extends HttpServlet {
                 group.setDescription(desc);
                 group.setIsActive(0);
                 groupint.create(group);
-                response.sendRedirect("SucessPage.jsp");
+                response.sendRedirect("Group.jsp");
             //}
 
         } else {

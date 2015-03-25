@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/labsystem?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">root</property>
-    <mapping resource="Pojo/UserAssistance.hbm.xml"/>
-    <mapping resource="Pojo/UploadFile.hbm.xml"/>
-    <mapping resource="Pojo/Group.hbm.xml"/>
-    <mapping resource="Pojo/Course.hbm.xml"/>
-    <mapping resource="Pojo/Notification.hbm.xml"/>
-    <mapping resource="Pojo/User.hbm.xml"/>
-    <mapping resource="Pojo/UserDelivery.hbm.xml"/>
-    <mapping resource="Pojo/Lab.hbm.xml"/>
-    <mapping resource="Pojo/StaffCourseGroup.hbm.xml"/>
-    <mapping resource="Pojo/Department.hbm.xml"/>
-  </session-factory>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/labsystem?zeroDateTimeBehavior=convertToNull</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.max_allowed_packet">32*1024*1024</property>
+        <mapping resource="Pojo/UserAssistance.hbm.xml"/>
+        <mapping resource="Pojo/UploadFile.hbm.xml"/>
+        <mapping resource="Pojo/Group.hbm.xml"/>
+        <mapping resource="Pojo/Course.hbm.xml"/>
+        <mapping resource="Pojo/Notification.hbm.xml"/>
+        <mapping resource="Pojo/User.hbm.xml"/>
+        <mapping resource="Pojo/UserDelivery.hbm.xml"/>
+        <mapping resource="Pojo/Lab.hbm.xml"/>
+        <mapping resource="Pojo/StaffCourseGroup.hbm.xml"/>
+        <mapping resource="Pojo/Department.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>

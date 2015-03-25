@@ -59,10 +59,10 @@ public class validateNameUpdateGroup extends HttpServlet {
                 dispatcher1.forward(request, response);
             } else {
                 groupInt.update(group);
-                response.sendRedirect("SucessPage.jsp");
+                response.sendRedirect("Group.jsp");
             }
         } else {
-            response.sendRedirect("getAllGroups");
+            response.sendRedirect("getAllGroupsForUpdate");
         }
 
     }

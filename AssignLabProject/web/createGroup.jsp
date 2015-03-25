@@ -31,8 +31,11 @@
                             <li><a href="Department.jsp" class="m3">Department</a></li>
                             <li><a href="Course.jsp" class="m4">Course</a></li>
                             <li><a href="User.jsp" class="m5">User</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li>
-
+                            <li class="last">
+                                <form action="LogoutServlet" method="post">
+                                    <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
+                                </form>
+                            </li>
                         </ul>
                     </nav>
                     <form action="#" id="search-form">
@@ -91,7 +94,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="span-col" id="create-span">*</span>
+                                        <span class="span-col" id="create-span"></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -105,7 +108,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="span-col" id="des-span">*</span>
+                                        <span class="span-col" id="des-span"></span>
                                     </td>
                                 </tr>
                                 <tr>

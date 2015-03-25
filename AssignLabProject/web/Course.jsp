@@ -29,8 +29,11 @@
                             <li><a href="Department.jsp" class="m3">Department</a></li>
                             <li class="current"><a href="Course.jsp" class="m4">Course</a></li>
                             <li><a href="User.jsp" class="m5">User</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li>
-
+                            <li class="last">
+                                <form action="LogoutServlet" method="post">
+                                    <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
+                                </form>
+                            </li>
                         </ul>
                     </nav>
                     <form action="#" id="search-form">
@@ -46,10 +49,11 @@
                 <aside>
                     <h3>Categories</h3>
                     <ul class="categories">
-                        <li><span><a href="beforeAddCourse">Create Course</a></span></li>
-                        <li><span><a href="#">Update Course</a></span></li>
-                        <li><span><a href="#" >Delete Course</a></span></li>
-                        <li class="last"><span><a href="beforeDeactCourse">Deactivate Course</a></span></li>
+                       <li><span><a href="AddCourse.jsp">Create Course</a></span></li>
+                        <li><span><a href="updateCourse.jsp">Update Course</a></span></li>
+                        <li><span><a href="#">Delete Course</a></span></li>
+                        <li><span><a href="deactiveCourse.jsp">Deactivate Course</a></span></li>
+                        <li  class="last"><span><a href="AssignLabCourse.jsp">Add Lab To Course</a></span></li>
                     </ul>
 
                     <h2>Fresh <span>News</span></h2>

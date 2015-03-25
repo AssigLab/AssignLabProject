@@ -56,7 +56,7 @@ public class validateNameDeactivateGroup extends HttpServlet {
                 dispatcher1.forward(request, response);
             } else {
                 groupInt.deactivate(group);
-                response.sendRedirect("SucessPage.jsp");
+                response.sendRedirect("Group.jsp");
             }
         } else {
             response.sendRedirect("getAllGroups");

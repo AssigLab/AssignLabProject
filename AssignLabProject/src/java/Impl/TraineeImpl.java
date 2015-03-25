@@ -1,6 +1,8 @@
 package Impl;
 
 
+import DAO.CourseDAO;
+import DAO.GenericDAO;
 import DAO.TraineeDAO;
 import Interfaces.UserInt;
 import Pojo.Department;
@@ -16,57 +18,60 @@ import java.util.List;
  */
 public class TraineeImpl implements UserInt {
 
-	private TraineeDAO Obj;
-	public TraineeDAO m_TraineeDAO;
+    private TraineeDAO Obj;
 
-    @Override
-    public int create(User Obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public TraineeImpl() {
+        this.Obj = new TraineeDAO();
     }
 
     @Override
-    public int deactivate(User Obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void create(User userObj) {
+        Obj.Insert(userObj);
     }
 
     @Override
-    public int delete(User Obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deactivate(User userObj) {
+        Obj.Update(userObj);
     }
 
     @Override
-    public List GetAllUserActive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(User userObj) {
+        Obj.Delete(userObj);
     }
 
     @Override
-    public List GetAllUserDeactive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List GetAllUserDepartActive(Department deptObj) {
+        return Obj.SelectAllActive(deptObj);
     }
 
     @Override
-    public List GetAllUserDepartActive(Department Obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List GetAllUserDepartDeactive(Department deptObj) {
+        return Obj.SelectAllDeactive(deptObj);
     }
 
     @Override
-    public List GetAllUserDepartDeactive(Department Obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List GetOneUser(User userObj) {
+        return Obj.SelectOne(userObj);
     }
 
     @Override
-    public List GetOneUserActive(User Obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List GetUserByName(User userObj) {
+        return Obj.SelectbyName(userObj);
     }
 
     @Override
-    public List GetOneUserDeactive(User Obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(User userObj) {
+        Obj.Update(userObj);
     }
 
-    @Override
-    public int update(User Obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  @Override
+    public User getUserByName(User user) {
+        GenericDAO aO = new CourseDAO();
+        aO.beginTransaction();
 
+        TraineeDAO tdao = new TraineeDAO();
+        User userRet = tdao.getUserByName(user);
+
+        return userRet;
+    }
 }

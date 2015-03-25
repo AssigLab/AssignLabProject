@@ -8,6 +8,7 @@
         <c:set var="deptlist" value="${requestScope.allactiveDepart}"/>
 
         <meta charset="utf-8">
+        <meta charset="utf-8">
         <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
         <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
         <script type="text/javascript" src="./js/jquery-1.4.2.min.js" ></script>
@@ -20,6 +21,31 @@
             var xmlhttp = null;
             var xmlhttp2 = null;
             var xmlhttp3 = null;
+            function getAllDepart() {
+                var req;
+                if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                    req = new XMLHttpRequest();
+                }
+                else {// code for IE6, IE5
+                    req = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                req.onreadystatechange = function() {
+                    if (req.readyState == 4 && req.status == 200) {
+                        var xmlDoc = req.responseXML;
+                        var depts = xmlDoc.getElementsByTagName("depart");
+                        for (var i = 0; i < depts.length; i++) {
+                            o = depts[i];
+                            // store all courses
+                            var departname = o.childNodes[0];
+                            $('#deptsall').append('<option value="' + departname.childNodes[0].nodeValue + '" > ' + departname.childNodes[0].nodeValue + '</option><br />');
+                        }
+                    }
+                }
+                req.open("POST", "http://localhost:8080/AssignLabProject/getDeparts", true);
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.send(null);
+            }
+            
             // when user select department , will assign department name , description in text field
             function refreshComp() {
                 var selVal = document.getElementById("deptsall").value;
@@ -74,7 +100,7 @@
 
         </script>
     </head>
-    <body id="page2">
+    <body id="page2" onload="getAllDepart()">
         <iframe  name="iframe_ab"  style=" z-index: -1; border:none ; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%" ></iframe>
         <!-- START PAGE SOURCE -->
         <div class="wrap">
@@ -88,8 +114,11 @@
                             <li><a href="Department.jsp" class="m3">Department</a></li>
                             <li class="current"><a href="Course.jsp" class="m4">Course</a></li>
                             <li><a href="User.jsp" class="m5">User</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li>
-
+                            <li class="last">
+                                <form action="LogoutServlet" method="post">
+                                    <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
+                                </form>
+                            </li>
                         </ul>
                     </nav>
                     <form action="#" id="search-form">
@@ -105,10 +134,11 @@
                 <aside>
                     <h3>Categories</h3>
                     <ul class="categories">
-                        <li><span><a href="beforeAddCourse">Create Course</a></span></li>
-                        <li><span><a href="#">Update Course</a></span></li>
-                        <li><span><a href="#" >Delete Course</a></span></li>
-                        <li class="last"><span><a href="beforeDeactCourse">Deactivate Course</a></span></li>
+                       <li><span><a href="AddCourse.jsp">Create Course</a></span></li>
+                        <li><span><a href="updateCourse.jsp">Update Course</a></span></li>
+                        <li><span><a href="#">Delete Course</a></span></li>
+                        <li><span><a href="deactiveCourse.jsp">Deactivate Course</a></span></li>
+                        <li  class="last"><span><a href="AssignLabCourse.jsp">Add Lab To Course</a></span></li>
                     </ul>
 
                     <h2>Fresh <span>News</span></h2>
@@ -143,9 +173,6 @@
                                         <div>
                                             <select class="form-control"  style="width:250px" name="AllDepart" onchange="refreshComp()" id="deptsall">
                                                 <option selected="selected" value="" selected="selected">Choose...</option>
-                                                <c:forEach var="fieldItem" items="${deptlist}">
-                                                    <option value="${fieldItem.name}">${fieldItem.name}</option>             
-                                                </c:forEach>
                                             </select>
                                         </div>
                                     </td>

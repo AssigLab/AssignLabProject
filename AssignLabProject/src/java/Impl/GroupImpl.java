@@ -1,11 +1,12 @@
 package Impl;
+
+import DAO.CourseDAO;
+import DAO.GenericDAO;
 import DAO.GroupDAO;
 import Interfaces.GroupInt;
 import Pojo.Group;
 import Pojo.User;
 import java.util.List;
-
-
 
 /**
  * @author Sara
@@ -14,12 +15,11 @@ import java.util.List;
  */
 public class GroupImpl implements GroupInt {
 
-	private GroupDAO groupDAO;
+    private GroupDAO groupDAO;
 
     public GroupImpl() {
-        groupDAO =new GroupDAO();
+        groupDAO = new GroupDAO();
     }
-        
 
     @Override
     public int create(Group obj) {
@@ -59,8 +59,14 @@ public class GroupImpl implements GroupInt {
     }
 
     @Override
-    public List getUserGroup(User Obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List getUserGroup(User obj) {
+        GenericDAO gdao = new CourseDAO();
+        gdao.beginTransaction();
+
+        GroupDAO group = new GroupDAO();
+
+        return group.selectUserGroups(obj);
+
     }
 
     @Override
@@ -74,5 +80,4 @@ public class GroupImpl implements GroupInt {
         return groupDAO.selectOneGroup(Obj);
     }
 
-	
 }

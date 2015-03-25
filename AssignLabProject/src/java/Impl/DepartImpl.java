@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class DepartImpl implements DepartInt {
     
+    
     private DepartDAO Obj;
 
     public DepartImpl() {

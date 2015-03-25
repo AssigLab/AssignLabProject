@@ -14,34 +14,26 @@ import java.util.List;
 public interface UserInt {
 
 	
-
 	/**
 	 * 
 	 * @param Obj
 	 */
-	public int create(User Obj);
-	
-
-	/**
-	 * 
-	 * @param Obj
-	 */
-	public int deactivate(User Obj);
+	public void create(User Obj);
 	
 
 	/**
 	 * 
 	 * @param Obj
 	 */
-	public int delete(User Obj);
+	public void deactivate(User Obj);
 	
 
-	public List GetAllUserActive();
-
-
-	public List GetAllUserDeactive();
+	/**
+	 * 
+	 * @param Obj
+	 */
+	public void delete(User Obj);
 	
-
 	/**
 	 * 
 	 * @param Obj
@@ -60,21 +52,21 @@ public interface UserInt {
 	 * 
 	 * @param Obj
 	 */
-	public List GetOneUserActive(User Obj);
+	public List GetOneUser(User Obj);
+	
+        /**
+	 * 
+	 * @param Obj
+	 */
+	public List GetUserByName(User Obj);
 	
 
 	/**
 	 * 
 	 * @param Obj
 	 */
-	public List GetOneUserDeactive(User Obj);
+	public void update(User Obj);
 	
-
-	/**
-	 * 
-	 * @param Obj
-	 */
-	public int update(User Obj);
-	
+         public User getUserByName(User user);
 
 }

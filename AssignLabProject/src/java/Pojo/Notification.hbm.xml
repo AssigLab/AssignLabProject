@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         <property name="message" type="string">
-            <column name="message" length="45" not-null="true" />
+            <column name="message" length="255" not-null="true" />
         </property>
         <set name="users" table="user_notification" inverse="false" lazy="true" fetch="select">
             <key>

@@ -4,9 +4,8 @@
 <html lang="en">
     <head>
         <title>Create Course</title>
-        <!--get All Active department from request --> 
-        <c:set var="deptlist" value="${requestScope.allactiveDepart}"/>
-
+        <c:set var="notification" value="${requestScope.SuccessOp}"/>
+        <meta charset="utf-8">
         <meta charset="utf-8">
         <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
         <link rel="stylesheet" href="./css/style.css" type="text/css" media="all">
@@ -16,6 +15,40 @@
         <script type="text/javascript" src="./js/Myriad_Pro_300.font.js"></script>
         <script type="text/javascript" src="./js/Myriad_Pro_400.font.js"></script>
         <script>
+            function getAllDepart() {
+                if("${notification}"!==""){
+                    document.getElementById("notify").hidden=false;
+                }
+                else{
+                    document.getElementById("notify").hidden=true;
+                }
+                var req;
+                if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                    req = new XMLHttpRequest();
+                }
+                else {// code for IE6, IE5
+                    req = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                req.onreadystatechange = function() {
+                    if (req.readyState == 4 && req.status == 200) {
+                        var xmlDoc = req.responseXML;
+                        var depts = xmlDoc.getElementsByTagName("depart");
+                        for (var i = 0; i < depts.length; i++) {
+                            o = depts[i];
+                            // store all courses
+                            var departname = o.childNodes[0];
+                            $('#deptsall').append('<option value="' + departname.childNodes[0].nodeValue + '" > ' + departname.childNodes[0].nodeValue + '</option><br />');
+                        }
+                    }
+                }
+                req.open("POST", "http://localhost:8080/AssignLabProject/getDeparts", true);
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                req.send(null);
+            }
+
+            function closeNotify(){
+                document.getElementById("notify").hidden=true;
+            }
             // check user select depart
             function chooseDept() {
                 var selVal = document.getElementById("deptsall").value;
@@ -47,7 +80,7 @@
             }
 
             function remove_lab() {
-                $(".list_labs:unchecked").parent().remove();
+                $(".list_labs:not(:checked)").parent().remove();
             }
             
             function checkName(){
@@ -64,38 +97,20 @@
                         }
                 }
                 var vvv=document.getElementById("name").value;
-                req.open("GET" , "http://127.0.0.1:8080/AssignLabProject/validAddCourse?Name="+vvv,true);
+                req.open("GET" , "http://localhost:8080/AssignLabProject/validAddCourse?name="+vvv,true);
                 req.send(null);
             }
             
-            function submitForm(){
-                var c=0;
-                if(document.getElementById("deptsall").value=="") {
-                    document.getElementById("errorDepart").innerHTML="Choose Depart";
-                    c++;
-                }
-                else{
-                    document.getElementById("errorDepart").innerHTML="";
-                    c--;
-                }
-                
-
-                if(document.getElementById("errorName").innerHTML!=""){
-                    c++;
-                }
-                else{
-                    c--;
-                }
-                if(c==-2){
+            function CheckAndSubmit() {
+                if (document.getElementById("errorName").innerHTML.trim() == "" && document.getElementById("deptsall").value.trim() != "") {
                     return true;
                 }
-                else{
-                    return false;
-                }
+                return false;
             }
+            
         </script>
     </head>
-    <body id="page2">
+    <body id="page2" onload="getAllDepart()">
         <iframe  name="iframe_ab"  style=" z-index: -1; border:none ; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%" ></iframe>
         <!-- START PAGE SOURCE -->
         <div class="wrap">
@@ -109,8 +124,11 @@
                             <li><a href="Department.jsp" class="m3">Department</a></li>
                             <li class="current"><a href="Course.jsp" class="m4">Course</a></li>
                             <li><a href="User.jsp" class="m5">User</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li>
-
+                            <li class="last">
+                                <form action="LogoutServlet" method="post">
+                                    <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
+                                </form>
+                            </li>
                         </ul>
                     </nav>
                     <form action="#" id="search-form">
@@ -126,11 +144,11 @@
                 <aside>
                     <h3>Categories</h3>
                     <ul class="categories">
-                        <li><span><a href="beforeAddCourse">Create Course</a></span></li>
-                        <li><span><a href="#">Update Course</a></span></li>
+                        <li><span><a href="AddCourse.jsp">Create Course</a></span></li>
+                        <li><span><a href="updateCourse.jsp">Update Course</a></span></li>
                         <li><span><a href="#">Delete Course</a></span></li>
-                        <li><span><a href="beforeDeactCourse">Deactivate Course</a></span></li>
-                        <li  class="last"><span><a href="#">Add Lab To Course</a></span></li>
+                        <li><span><a href="deactiveCourse.jsp">Deactivate Course</a></span></li>
+                        <li  class="last"><span><a href="AssignLabCourse.jsp">Add Lab To Course</a></span></li>
                     </ul>
 
                     <h2>Fresh <span>News</span></h2>
@@ -148,7 +166,11 @@
                 </aside>
                 <section id="content">
                     <div class="inside" id="inside_form">
-                        <form class="m-t" role="form"  method="post" action="validAddCourse">
+                        <div id="notify" class="alert alert-info alert-dismissable" hidden>
+                            <button aria-hidden="true" data-dismiss="alert" class="close1" type="button" onclick="closeNotify();">×</button>
+                            Successful Operation
+                        </div>
+                        <form class="m-t" onsubmit="return CheckAndSubmit ()"  method="post" action="validAddCourse">
                             <table class="form_table">
                                 <tr>
                                     <td colspan="3">
@@ -163,7 +185,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
-                                            <input type="text" onblur="checkName()" name="name" class="form-control" placeholder="Course Name" required="">
+                                            <input type="text" onblur="checkName()" id="name" name="name" class="form-control" placeholder="Course Name" required="">
                                         </div>
                                     </td>
                                     <td>
@@ -194,12 +216,9 @@
                                     </td>
                                     <td>
                                         <br/>
-                                        <div class="form-group">
-                                            <select class="form-control"  name="AllDepart" id="deptsall">
+                                        <div>
+                                            <select class="form-control"  style="width:250px" name="AllDepart" id="deptsall">
                                                 <option selected="selected" value="" selected="selected">Choose...</option>
-                                                <c:forEach var="fieldItem" items="${deptlist}">
-                                                    <option value="${fieldItem.name}">${fieldItem.name}</option>             
-                                                </c:forEach>
                                             </select>
                                         </div>
                                     </td>
@@ -236,7 +255,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <input type="submit" class="btn btn-create block full-width m-b" onclick="submitForm()" />
+                                        <input type="submit" class="btn btn-create block full-width m-b" />
 
                                     </td>
                                     <td></td>

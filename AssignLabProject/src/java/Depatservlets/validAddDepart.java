@@ -56,11 +56,12 @@ public class validAddDepart extends HttpServlet {
                 deprtObj.setDescription(desc);
                 deprtObj.setIsActive(0);
                 Obj.create(deprtObj);
-                response.sendRedirect("SucessPage.jsp");
+                request.setAttribute("SuccessOp", "Successful");
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("/AddDepart.jsp");
+                dispatcher1.forward(request, response);
             }
 
         } else {
-            System.out.println("HHHHH444");
             response.sendRedirect("AddDepart.jsp");
         }
     }

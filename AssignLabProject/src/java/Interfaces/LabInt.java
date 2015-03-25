@@ -1,11 +1,8 @@
 package Interfaces;
 
-
 import Pojo.Course;
 import Pojo.Lab;
 import java.util.List;
-
-
 
 /**
  * @author JETS_ITI
@@ -14,42 +11,47 @@ import java.util.List;
  */
 public interface LabInt {
 
-	
+    /**
+     *
+     * @param obj
+     */
+    public void create(Lab obj);
 
+    public List getAllLab(Course obj);
+    /**
+     *
+     * @param obj
+     */
+    public void delete(Lab obj);
 
-	/**
-	 * 
-	 * @param obj
-	 */
-	public int create(Lab obj);
-	
+    /**
+     *
+     * @param obj
+     */
+    public List getAllLabActive(Course obj);
 
-	/**
-	 * 
-	 * @param obj
-	 */
-	public int delete(Lab obj);
-	
+    /**
+     *
+     * @param obj
+     */
+    public List getAllLabDeact(Course obj);
 
-	/**
-	 * 
-	 * @param obj
-	 */
-	public List getAllLab(Course obj);
-	
+    /**
+     *
+     * @param obj
+     */
+    public List getOneLab(Lab obj);
 
-	/**
-	 * 
-	 * @param obj
-	 */
-	public List getOneLab(Lab obj);
-	
+    /**
+     *
+     * @param obj
+     */
+    public void update(Lab obj);
 
-	/**
-	 * 
-	 * @param obj
-	 */
-	public int update(Lab obj);
-	
+    public void update_staff(Lab obj);
+
+    public void updateEnabled_staff(Lab obj);
+
+    public void shiftqueue(Lab current, Lab next);
 
 }

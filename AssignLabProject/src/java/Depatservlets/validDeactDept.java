@@ -45,7 +45,9 @@ public class validDeactDept extends HttpServlet {
             deprtObj.setIsActive(1);
             if (names.size() > 0) {
                 Obj.update(deprtObj);
-                response.sendRedirect("SucessPage.jsp");
+                request.setAttribute("SuccessOp", "Successful");
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("/deactiveDepart.jsp");
+                dispatcher1.forward(request, response);
             } else {
                 request.setAttribute("allactiveDepart", Obj.GetAllDepartActive());
                 RequestDispatcher dispatcher1 = request.getRequestDispatcher("deactiveDepart.jsp");

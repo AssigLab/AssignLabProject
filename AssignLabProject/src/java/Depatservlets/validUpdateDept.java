@@ -57,7 +57,9 @@ public class validUpdateDept extends HttpServlet {
             }
             else{
                 Obj.update(deprtObj);
-                response.sendRedirect("SucessPage.jsp");
+                request.setAttribute("SuccessOp", "Successful");
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("/UpdateDepart.jsp");
+                dispatcher1.forward(request, response);
             }
         } else {
             response.sendRedirect("beforeUpdateDepart");

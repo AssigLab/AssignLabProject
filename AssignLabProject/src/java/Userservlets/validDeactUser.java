@@ -3,11 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Courseservlets;
 
-import Depatservlets.*;
+package Userservlets;
+
 import Impl.DepartImpl;
+import Impl.StaffImpl;
 import Interfaces.DepartInt;
+import Interfaces.UserInt;
+import Pojo.Department;
+import Pojo.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -21,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JETS_ITI
  */
-public class beforeAddCourse extends HttpServlet {
+public class validDeactUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +38,21 @@ public class beforeAddCourse extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DepartInt deptIntObj = new DepartImpl();
-        List l = deptIntObj.GetAllDepartActive();
-        request.setAttribute("allactiveDepart", l);
-        getServletContext().getRequestDispatcher("/AddCourse.jsp").forward(request, response);
+        String selectEmail=request.getParameter("names");
+        
+        User Obj=new User();
+        
+        UserInt userint=new StaffImpl();
+        Obj.setEmail(selectEmail);
+        List users=userint.GetUserByName(Obj);
+       
+        Obj=(User)users.get(0);
+        Obj.setIsActive(1);
+        
+        userint.update(Obj);
+        request.setAttribute("SuccessOp", "Successful");
+        RequestDispatcher dispatcher1 = request.getRequestDispatcher("/deactiveUser.jsp");
+        dispatcher1.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -15,6 +15,7 @@
         <script type="text/javascript" src="js/ie_png.js"></script>
         <script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
         <![endif]-->
+    <a href="Department.jsp"></a>
         <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
     </head>
     <body id="page3">
@@ -30,8 +31,11 @@
                             <li class="current"><a href="Department.jsp" class="m3">Department</a></li>
                             <li><a href="Course.jsp" class="m4">Course</a></li>
                             <li><a href="User.jsp" class="m5">User</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b">Log Out</button></li>
-
+                            <li class="last">
+                                <form action="LogoutServlet" method="post">
+                                    <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
+                                </form>
+                            </li>
                         </ul>
                     </nav>
                     <form action="#" id="search-form">
