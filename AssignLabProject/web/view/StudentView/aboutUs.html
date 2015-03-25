@@ -26,11 +26,14 @@
                     <h1><a href="#">Student's site</a></h1>
                     <nav>
                         <ul>
-                            <li><a href="index.jsp.html" class="m1">Home</a></li>
-                            <li  class="current"><a href="aboutUs.html" class="m2">About Us</a></li>
-                            <li class="last"><a href="schedule.html" class="m3">Edit Profile</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b ">Log Out</button></li>
-                        </ul>
+                            <li><a href="#" class="m1">Home</a></li>
+                            <li  class="current"><a href="#" class="m2">About Us</a></li>
+                            <li class="last"><a href="#" class="m3">Edit Profile</a></li>
+                            <li class="last">
+                                <form action="LogoutServlet" method="post">
+                                    <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
+                                </form>
+                            </li>                        </ul>
                     </nav>
                     <form action="#" id="search-form">
                         <fieldset>

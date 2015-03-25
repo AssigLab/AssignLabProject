@@ -28,28 +28,31 @@
     </head>
     <body id="page1">
         <!-- START PAGE SOURCE -->
-        
-        
-        
 
 
 
-        
+
+
+
+
         <%
-   
-   response.setIntHeader("Refresh", 100);
-   %>
+
+            response.setIntHeader("Refresh", 15);
+        %>
         <div class="wrap">
             <header>
                 <div class="container">
                     <h1><a href="#">Student's site</a></h1>
                     <nav>
                         <ul>
-                            <li class="current"><a href="index.jsp.html" class="m1">Home</a></li>
-                            <li><a href="aboutUs.html" class="m2">About Us</a></li>
-                            <li class="last"><a href="schedule.html" class="m3">Schedule</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b ">Log Out</button></li>
-                        </ul>
+                            <li class="current"><a href="#" class="m1">Home</a></li>
+                            <li><a href="#" class="m2">About Us</a></li>
+                            <li class="last"><a href="#" class="m3">Schedule</a></li>
+                            <li class="last">
+                                <form action="LogoutServlet" method="post">
+                                    <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
+                                </form>
+                            </li>                        </ul>
                     </nav>
                     <form action="#" id="search-form">
                         <fieldset>
@@ -65,30 +68,33 @@
                     <h3>Groups</h3>
                     <ul class="categories">
                         <li>
-                      <c:forEach items="${groupList}" var="group"> 
-                          
-                          <span><a href="#"> ${group.name} </a></span>
-                          
-                        </li>
+
+                            <c:forEach items="${groupList}" var="group"> 
+
+                                <span><a href="#"> ${group.name} </a></span>
+
+                            </li>
                         </c:forEach>
+
+
                     </ul>
 
                     <h2>Fresh <span>News</span></h2>
                     <ul class="news">
                         <li style=" color:#ff7b01">
-                             ${notification}
-                             </li>
-                        
+                            ${notification}
+                        </li>
+
                 </aside>
                 <section id="content">
                     <div>
                         <button type="button" class="btn btn-upload block full-width m-b"><a id="link_btn" href="#openuploadModal">Upload File</a></button>
                         <span style=" color:#ff7b01"> ${cantUploadFile}  </span>
                     </div>
-                
-                 
-                    
-                    
+
+
+
+
                     <!--Modal Dialog to upload file  -->
                     <div id="openuploadModal" class="modalDialog">
                         <div>
@@ -116,9 +122,9 @@
 
                                     <tr>
                                         <td colspan="2">
-                                            
-                                            
-                                        
+
+
+
                                             <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Upload</button>
                                             <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn2"><a id="link_btn" href="#close" >Cancel</a></button> 
                                         </td>
@@ -156,15 +162,15 @@
                                             </c:forEach>
                                         </li>
                                     </ol>
-                                    
+
                                 </div>
                                 <div style=" color:#ff7b01" >  ${cantRequestAssistant} </div>
                             </div>
                             <div class="ibox-bottom">
-                               <form class="m-t" role="form" action=" CancelAssistanceQueueRequest" methode="post">
-                                <button type="button" class="btn btn-que block full-width m-b"><a id="link_btn" href="#openModal">Request</a></button>
-                                <button type="submit" class="btn btn-que block full-width m-b">Cancel</button>
-                              </form>
+                                <form class="m-t" role="form" action=" CancelAssistanceQueueRequest" methode="post">
+                                    <button type="button" class="btn btn-que block full-width m-b"><a id="link_btn" href="#openModal">Request</a></button>
+                                    <button type="submit" class="btn btn-que block full-width m-b">Cancel</button>
+                                </form>
                             </div>
 
                         </div>
@@ -188,22 +194,22 @@
                                         </c:forEach>
                                     </ol>
                                 </div>
-                                       <div style=" color:#ff7b01" >  ${cantRequestDelivery} </div>
+                                <div style=" color:#ff7b01" >  ${cantRequestDelivery} </div>
                             </div>
                             <div class="ibox-bottom">
-                                 <form class="m-t" role="form" action=" CancelDeliveryQueueRequest" methode="post">
-                                <button type="button" class="btn btn-que block full-width m-b"><a id="link_btn" href="#openModal1">Request</a></button>
-                                <button type="submit" class="btn btn-que block full-width m-b">Cancel</button>
-                                     </form>
+                                <form class="m-t" role="form" action=" CancelDeliveryQueueRequest" methode="post">
+                                    <button type="button" class="btn btn-que block full-width m-b"><a id="link_btn" href="#openModal1">Request</a></button>
+                                    <button type="submit" class="btn btn-que block full-width m-b">Cancel</button>
+                                </form>
                             </div>
 
                         </div>
                     </div>
                 </section>
                 <!--Modal Dialog for Delete group  -->
-                
-                
-                  <div id="openModal1" class="modalDialog">
+
+
+                <div id="openModal1" class="modalDialog">
                     <div>
 
                         <a href="#close" title="Close" class="close">X</a>
@@ -229,11 +235,11 @@
 
                                 <tr>
                                     <td colspan="2">
-                                        
-                                 
+
+
                                         <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Confirm</button>
                                         <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn2"><a id="link_btn" href="#close" >Cancel</a></button> 
-                                          
+
                                     </td>
                                     <td>
 
@@ -243,16 +249,16 @@
                         </form>
                     </div>
                 </div>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
+
+
                 <!--                     -->
                 <div id="openModal" class="modalDialog">
                     <div>
@@ -280,11 +286,11 @@
 
                                 <tr>
                                     <td colspan="2">
-                                        
-                                 
+
+
                                         <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn1">Confirm</button>
                                         <button type="submit" class="btn btn-create block full-width m-b" id="popup_btn2"><a id="link_btn" href="#close" >Cancel</a></button> 
-                                          
+
                                     </td>
                                     <td>
 
@@ -302,15 +308,15 @@
                 <div style="clear:both;"></div>
             </div>
         </footer>
-                            
-                            
-                                    <script>
-function myFunction() {
-    var x = document.getElementById("popup_upload").value;
-    alert(x);
-   // document.getElementById("demo").innerHTML = x;
-}
-</script>
+
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("popup_upload").value;
+                alert(x);
+// document.getElementById("demo").innerHTML = x;
+            }
+        </script>
 </html>
 
 <!--  <ol class="dd-list">

@@ -16,7 +16,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,55 +32,53 @@ public class CancelAssistanceQueueRequest extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    QueueInt queueInt = new QueueImpl();
+    
+    
+     QueueInt queueInt=new QueueImpl();
 
-    public int cancelRequestInAssistanceQueue(User user, Lab lab) {
+    public boolean cancelRequestInAssistanceQueue(User user,Lab lab){        
        // QueueDAO qd=new QueueDAO();
-        //  return qd.getTraineeInDeliveryQueue(lab);
-
-        int check = queueInt.cancelRequestInAssistanceQueue(user, lab);
+      //  return qd.getTraineeInDeliveryQueue(lab);
+        
+        
+      boolean check= queueInt.cancelRequestInAssistanceQueue(user, lab);
         return check;
-
     }
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        int flag;
-        HttpSession session = request.getSession(true);
-        Lab lab;
-        User user = (User) session.getAttribute("user");
+         boolean flag;
        
-        if ((Integer) session.getAttribute("labfound") == 1) {
-            lab = (Lab) session.getAttribute("lab");//new Lab()
-            flag = cancelRequestInAssistanceQueue(user, lab);
-
-            // flag=true;
-            if (flag == 2) {
-                System.out.println("Flag");
-                out.println(" request dao ");
-                RequestDispatcher requestdispatcher = request.getRequestDispatcher("QueueServlet");
+        User user=new User();
+    //    user.setName("sara");
+        user.setIdUser(3);
+     //   user.setPass("123");
+         Lab lab=new Lab();
+    //    lab.setDescription("lab1");
+      //  lab.setName("lab1");
+        lab.setIdLab(1);
+        flag=cancelRequestInAssistanceQueue(user, lab);
+       // flag=true;
+        if (flag==true)
+        {
+            System.out.println("Flag"); 
+                 out.println(" request dao ");
+        RequestDispatcher requestdispatcher=request.getRequestDispatcher("QueueServlet");
+       System.out.println("done");
+            out.println(" request dao ");
+            requestdispatcher.forward(request,response);
+                 out.println(" request dao ");
+        }
+        
+        else {
+            
+                request.setAttribute("cantRequestAsssistance", "you arent in queue already"); 
+                 RequestDispatcher requestdispatcher=request.getRequestDispatcher("QueueServlet");
                 System.out.println("done");
-                out.println(" request dao ");
-                requestdispatcher.forward(request, response);
-                out.println(" request dao ");
-            } else if (flag == 3) {
-
-                request.setAttribute("cantRequestAsssistance", "you arent in queue already");
-                RequestDispatcher requestdispatcher = request.getRequestDispatcher("QueueServlet");
-                System.out.println("done");
-                out.println(" request dao ");
-                requestdispatcher.forward(request, response);
-            } else if (flag == 1) {
-
-                request.setAttribute("cantRequestAsssistance", "sorry  lab is closed");
-                RequestDispatcher requestdispatcher = request.getRequestDispatcher("QueueServlet");
-                System.out.println("done");
-                out.println(" request dao ");
-                requestdispatcher.forward(request, response);
-            }
-
+            out.println(" request dao ");
+            requestdispatcher.forward(request,response);
         }
     }
 

@@ -22,45 +22,36 @@ public class NotificationDAO extends GenericDAO {
     public boolean SendNotification(User user, Notification notify) {
 
         beginTransaction();
-        
-        User user1=(User) getSession().load(User.class,user.getIdUser());
-      if( user1.getOnline()==1) 
-      {
-        notify = (Notification) getSession().load(Notification.class, notify.getIdNotification());
-        notify.getUsers().add(user);
-        notify.setIdNotification(notify.getIdNotification());
-        
-        saveOrUpdate(notify);
-        getTransaction().commit();
-        return true;
-        
-      }
-      else {
-          
-          return false;
-      }
-    }
-    
-    
-    public Notification getNotification(User user)
-    {
-        
-          beginTransaction();
-        
-       List<Notification>notify=getSession().createCriteria(Notification.class).createAlias("users", "u").add(Restrictions.eq("u.idUser",user.getIdUser())).list();
-       
-              Iterator it = notify.iterator();
-              System.out.println("hibernate notify");
-              if(notify.size()>0){
-                 Notification notification=notify.get(notify.size()-1);
-                 return notification; 
-              }
-              System.out.println("hibernate notify");
-        return null; 
+
+        User user1 = (User) getSession().load(User.class, user.getIdUser());
+        if (user1.getOnline() == 1) {
+            notify = (Notification) getSession().load(Notification.class, notify.getIdNotification());
+            notify.getUsers().add(user);
+            notify.setIdNotification(notify.getIdNotification());
+
+            saveOrUpdate(notify);
+            getTransaction().commit();
+            return true;
+
+        } else {
+
+            return false;
         }
-          
-    
-        
     }
 
+    public Notification getNotification(User user) {
 
+        beginTransaction();
+
+        List<Notification> notify = getSession().createCriteria(Notification.class).createAlias("users", "u").add(Restrictions.eq("u.idUser", user.getIdUser())).list();
+
+        Iterator it = notify.iterator();
+        if (notify.size() > 0) {
+            Notification notification = notify.get(notify.size() - 1);
+            System.out.println("hibernate notify");
+            return notification;
+        }
+        return null;
+    }
+
+}

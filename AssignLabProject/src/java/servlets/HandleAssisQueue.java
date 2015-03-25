@@ -52,11 +52,11 @@ public class HandleAssisQueue extends HttpServlet {
 
             if (request.getParameter("pick") != null) {
                 //first Servlet
-                int1.updateAssisQueue(userRet);
+              //  int1.updateAssisQueue(userRet);
 
             } else if (request.getParameter("dequeue") != null) {
                 //second    
-                int1.updateAssisQueue_dequeue(userRet);
+              //  int1.updateAssisQueue_dequeue(userRet);
             }
 
             System.out.println("ready to redirect");

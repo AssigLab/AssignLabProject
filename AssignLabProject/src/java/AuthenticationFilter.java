@@ -45,7 +45,7 @@ public class AuthenticationFilter implements Filter {
 
         } else {
             //session not null
-            System.out.println("   session is not null ");
+            System.out.println("session is not null ");
             User u = (User) session.getAttribute("user");
             if (u == null) {
                 //user not logged in
@@ -60,9 +60,9 @@ public class AuthenticationFilter implements Filter {
                 System.out.println("is admin :" + u.getIsAdmin());
                 int role = u.getType();
 
-                if (uri.contains("/StudentView") || uri.contains("/UploadServlet")) {
+                if (uri.contains("/StudentView") || uri.contains("/UploadServlet") || uri.contains("/CancelAssistanceQueueRequest") || uri.contains("/CancelDeliveryQueueRequest") || uri.contains("/CancelRequestInDeliveryQueueServlet") || uri.contains("/RequestAssistantQueueServlet") || uri.contains("/RequestDeliveryQueueServlet") || uri.contains("/QueueServlet")) {
                     //trainee
-                    if (role == 1 ) {
+                    if (role == 1) {
                         chain.doFilter(request, response);
                         System.err.println("student");
                     } else {

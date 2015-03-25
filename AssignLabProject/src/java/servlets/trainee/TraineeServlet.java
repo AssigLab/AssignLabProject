@@ -25,7 +25,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -51,14 +50,13 @@ public class TraineeServlet extends HttpServlet {
 
     }
 
-    public Notification getNotification(User user) {
-        return notificationInt.getNotification(user);
-
+    public List<Group> getGroups(User u) {
+        GroupDAO gd = new GroupDAO();
+        return gd.selectUserGroups(u);
     }
 
-    public List<Group> getGroup(User user) {
-
-        return queueInt.getUserGroups(user);
+    public Notification getNotification(User user) {
+        return notificationInt.getNotification(user);
 
     }
 
@@ -134,11 +132,10 @@ public class TraineeServlet extends HttpServlet {
          u1.setPass("123");
          users.add(u1);
          */
-        HttpSession session = request.getSession(true);
-        //User user = new User();
-//        user.setName("heba");
-//        user.setIdUser(2);
-//        user.setPass("123");
+        User user = new User();
+        user.setName("heba");
+        user.setIdUser(2);
+        user.setPass("123");
         /* users.add(u2);
        
          User u3=new User();
@@ -152,31 +149,27 @@ public class TraineeServlet extends HttpServlet {
          u3.setIdUser(5);
          u3.setPass("12367");
          users.add(u4);*/
-        Lab lab;
-        User user = (User) session.getAttribute("user");
-        if ((Integer) session.getAttribute("labfound") == 1) {
-            lab = (Lab) session.getAttribute("lab");//new Lab();
-            List assistanceQueue = getAssQueueUser(lab);
-            List deliveryQueue = getDeliveryQueueUser(lab);
-            Notification notification = getNotification(user);
-
-            if (notification != null) {
-                request.setAttribute("notification", notification.getMessage());
-            } else {
-                request.setAttribute("notification", " ");
-            }
-
-            request.setAttribute("deliveryQueue", deliveryQueue);
-            request.setAttribute("assistanceQueue", assistanceQueue);
-        } else {
-            lab = new Lab();
-        }
-        List groupList = getGroup(user);
+        Lab lab = new Lab();
+        //  lab.setDescription("lab1");
+        //   lab.setName("lab1");
+        lab.setIdLab(1);
+        QueueDAO queue = new QueueDAO();
+        List groupList = queue.getUserGroups(user);
         request.setAttribute("groupList", groupList);
         System.out.println(groupList.size());
-      //  lab.setDescription("lab1");
-        //   lab.setName("lab1");
-        // lab.setIdLab(1);
+
+        List assistanceQueue = getAssQueueUser(lab);
+        List deliveryQueue = getDeliveryQueueUser(lab);
+        Notification notification = getNotification(user);
+
+        if (notification != null) {
+            request.setAttribute("notification", notification.getMessage());
+        } else {
+            request.setAttribute("notification", "");
+        }
+
+        request.setAttribute("deliveryQueue", deliveryQueue);
+        request.setAttribute("assistanceQueue", assistanceQueue);
 
         RequestDispatcher requestdispatcher = request.getRequestDispatcher("/view/StudentView/index.jsp");
         requestdispatcher.forward(request, response);
