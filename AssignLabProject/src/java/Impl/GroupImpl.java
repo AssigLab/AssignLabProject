@@ -18,6 +18,7 @@ public class GroupImpl implements GroupInt {
     private GroupDAO groupDAO;
 
     public GroupImpl() {
+        System.out.println("groupImpl");
         groupDAO = new GroupDAO();
     }
 
@@ -50,12 +51,14 @@ public class GroupImpl implements GroupInt {
 
     @Override
     public Group getOneGroupActive(Group obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+       return null;
     }
 
     @Override
     public Group getOneGroupDeactive(Group obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        return null;
     }
 
     @Override

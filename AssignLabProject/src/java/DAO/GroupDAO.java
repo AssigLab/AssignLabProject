@@ -2,8 +2,13 @@ package DAO;
 
 import Pojo.Group;
 import Pojo.User;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 
 /**
  * @author Sara
@@ -101,9 +106,21 @@ public class GroupDAO extends GenericDAO {
     /**
      *
      * @param Obj
+     * @return
      */
     public List selectUserGroups(User Obj) {
-        return null;
+
+        Obj = (User) getSession().load(User.class, Obj.getIdUser());
+        Iterator it = Obj.getGroups().iterator();
+        List<Group> groupList = new ArrayList<Group>();
+        System.out.println("user of groups :"+groupList.size());
+        while (it.hasNext()) {
+            Group group = (Group) it.next();
+            groupList.add(group);
+
+        }
+
+        return groupList;
     }
 
     /**

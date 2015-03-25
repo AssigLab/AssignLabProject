@@ -46,32 +46,32 @@ public class GetGroups extends HttpServlet {
 //                    new User();
 //            user.setIdUser(1);
 //            user.setName("Muhammad Edmerdash");
-            if(user!=null){
+            if (user != null) {
                 System.out.println("user is not null in get group");
-            GroupInt groupInt;
-            List<Group> groups;
-            groupInt = new GroupImpl();
-            groups = groupInt.getUserGroup(user);
+                GroupInt groupInt;
+                List<Group> groups;
+                groupInt = new GroupImpl();
+                groups = groupInt.getUserGroup(user);
+                System.out.println("groups length "+groups.size());
+                request.getSession().setAttribute("user", user);
 
-            request.getSession().setAttribute("user", user);
+                System.out.println(groups);
 
-            System.out.println(groups);
+                request.getSession().setAttribute("groups", groups);
 
-            request.getSession().setAttribute("groups", groups);
-
-            RequestDispatcher requestDispatcher
-                    = request.getRequestDispatcher("../StuffView/GetDepartments.jsp");
-            requestDispatcher.forward(request, response);
+                RequestDispatcher requestDispatcher
+                        = request.getRequestDispatcher("StuffView/GetDepartments.jsp");
+                requestDispatcher.forward(request, response);
 //            response.sendRedirect("/StaffSystem/StuffView/GetDepartments.jsp");
-        }else{
+            } else {
                 System.out.println("user is null in get group");
-              RequestDispatcher requestDispatcher
-                    = request.getRequestDispatcher("/index.jsp");
-            requestDispatcher.forward(request, response);
+                RequestDispatcher requestDispatcher
+                        = request.getRequestDispatcher("/index.jsp");
+                requestDispatcher.forward(request, response);
             }
-        
+
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

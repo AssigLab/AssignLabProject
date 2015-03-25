@@ -49,14 +49,18 @@
                         <ul>
                             <li><a href="Home.jsp" class="m1">Home</a></li>
                             <li   class="current"><a href="GetGroups" class="m2">View Lab</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b ">Log Out</button></li>
-                        </ul>
+                            <li class="last">
+                                <form action="LogoutServlet" method="post">
+                                    <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
+                                </form>
+                            </li>                        </ul>
                     </nav>
                     <form action="#" id="search-form">
                         <fieldset>
                             <div class="rowElem">
                                 <input type="text" class="form-control" placeholder="Search" required="">
                                 <button type="button" class="btn btn-search block full-width m-b">Search</button>
+                            </div>
                         </fieldset>
                     </form>
                 </div>

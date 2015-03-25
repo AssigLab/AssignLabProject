@@ -10,7 +10,7 @@
     <head>
         <title> Stuff's View</title>
         <meta charset="utf-8">
-       <link rel="stylesheet" href="http://localhost:8080/AssignLabProject/stuffcss/reset.css" type="text/css" media="all">
+        <link rel="stylesheet" href="http://localhost:8080/AssignLabProject/stuffcss/reset.css" type="text/css" media="all">
         <link rel="stylesheet" href="http://localhost:8080/AssignLabProject/stuffcss/style.css" type="text/css" media="all">
         <script type="text/javascript" src=http://localhost:8080/AssignLabProject/stuffjs/jquery-1.4.2.min.js" ></script>
         <script type="text/javascript" src="http://localhost:8080/AssignLabProject/stuffjs/cufon-yui.js"></script>
@@ -38,8 +38,11 @@
                         <ul>
                             <li  class="current"><a href="Home.jsp" class="m1">Home</a></li>
                             <li><a href="GetDepartments.jsp" class="m2">View Lab</a></li>
-                            <li class="last"><button type="button" class="btn btn-logout block full-width m-b ">Log Out</button></li>
-                        </ul>
+                            <li class="last">
+                                <form action="LogoutServlet" method="post">
+                                    <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
+                                </form>
+                            </li>                        </ul>
                     </nav>
                     <form action="#" id="search-form">
                         <fieldset>
