@@ -36,7 +36,7 @@
                     <h1><a href="#">Stuff's site</a></h1>
                     <nav>
                         <ul>
-                            <li  class="current"><a href="Home.jsp" class="m1">Home</a></li>
+                            <li  class="current"><a href="#" class="m1">Home</a></li>
                             <li><a href="GetDepartments.jsp" class="m2">View Lab</a></li>
                             <li class="last">
                                 <form action="LogoutServlet" method="post">
