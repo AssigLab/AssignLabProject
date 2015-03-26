@@ -40,7 +40,7 @@
                     <nav>
                         <ul>
                             <li><a href="#" class="m1">Home</a></li>
-                            <li  class="current"><a href="GetGroups" class="m2">View Lab</a></li>
+                            <li  class="current"><a href="./GetGroups" class="m2">View Lab</a></li>
                             <li class="last">
                                 <form action="LogoutServlet" method="post">
                                     <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
@@ -48,110 +48,102 @@
                             </li>
                         </ul>
                     </nav>
-                    <form action="#" id="search-form">
-                        <fieldset>
-                            <div class="rowElem">
-                                <input type="text" class="form-control" placeholder="Search" required="">
-                                <!--<button type="button" class="btn btn-search block full-width m-b">Search</button>-->
-                                </fieldset>
-                                </form>
-                            </div>
-                            </header>
-                            <div class="container">
-                                <aside>
-                                    <h3>Categories</h3>
-                                    <ul class="categories">
-                                        <li><span><a href="#" >About Us</a></span></li>
-                                        <li class="last"><span><a href="#" >Show Statistics</a></span></li>
-                                    </ul>
+         
+                </div>
+            </header>
+            <div class="container">
+                <aside>
+                    <h3>Categories</h3>
+                    <ul class="categories">
+                        <li><span><a href="#" >About Us</a></span></li>
+                        <li class="last"><span><a href="#" >Show Statistics</a></span></li>
+                    </ul>
 
-                                    <h2>Fresh <span>News</span></h2>
-                                    <ul class="news">
-                                        <li><strong>June 30, 2010</strong>
-                                            <h4><a href="#">Sed ut perspiciatis unde</a></h4>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque. </li>
-                                        <li><strong>June 14, 2010</strong>
-                                            <h4><a href="#">Neque porro quisquam est</a></h4>
-                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur magni. </li>
-                                        <li><strong>May 29, 2010</strong>
-                                            <h4><a href="#">Minima veniam, quis nostrum</a></h4>
-                                            Uis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae. </li>
-                                    </ul>
-                                </aside>
-                                <section id="content">
-                                    <div class="inside" id="inside_form">
+                    <h2>Fresh <span>News</span></h2>
+                    <ul class="news">
+                        <li><strong>18-02-2015</strong>
+                            <h4><a href="#">On the 11th of February 2015,</a></h4>
+                             Information Technology Institute hosted the well-known acclaimed Egyptian writer Gamal El-Ghitani. </li>
+                        <li><strong>08-02-2015</strong>
+                            <h4><a href="#">On February 3rd, 2015,</a></h4>
+                            Information Technology Institute hosted an esteemed delegation from the American multinational technology and consulting corporation, IBM.   </li>
+                        
+                    </ul>
+                </aside>
+                <section id="content">
+                    <div class="inside" id="inside_form">
 
-                                        <form class="m-t" role="form" action="GetCourses">
+                        <form class="m-t" role="form" action="GetCourses">
 
-                                            <table class="form_table">
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <div id="form_header">Active Groups</div>
-                                                    </td>
-                                                    <td></td>
+                            <table class="form_table">
+                                <tr>
+                                    <td colspan="2">
+                                        <div id="form_header">Active Groups</div>
+                                    </td>
+                                    <td></td>
 
-                                                </tr>
+                                </tr>
 
-                                                <tr>
-                                                    <td>
-                                                        <h3>Select Group</h3>
-                                                    </td>
-                                                    <td>
-                                                        <div>
+                                <tr>
+                                    <td>
+                                        <h3>Select Group</h3>
+                                    </td>
+                                    <td>
+                                        <div>
 
-                                                            <%--<jsp:useBean id="deptss" scope="session" class="beanspkg.Groups"/>--%>
-                                                            <%--<c:set var="selectedLocaleString" value="${param.dept}" />--%>
-                                                            <%--<c:set var="selectedFlag" value="${!empty selectedDeptString}" />--%>
+                                            <%--<jsp:useBean id="deptss" scope="session" class="beanspkg.Groups"/>--%>
+                                            <%--<c:set var="selectedLocaleString" value="${param.dept}" />--%>
+                                            <%--<c:set var="selectedFlag" value="${!empty selectedDeptString}" />--%>
 
 
-                                                            <select name=dept class="form-control">
+                                            <select name=dept class="form-control">
 
-                                                                <c:forEach var="deptString" items="${sessionScope.groups}" >
-                                                                    <%--<c:choose>
-                                                                        <c:when test="${selectedFlag}">
-                                                                            <c:choose>
-                                                                                <c:when test="${f:equals(selectedLocaleString,localeString)}" >
-                                                                                    <option selected>${localeString}</option>
-                                                                                </c:when>
-                                                                                <c:otherwise>
-                                                                                    <option>${localeString}</option>
-                                                                                </c:otherwise>
-                                                                            </c:choose>
-                                                                        </c:when>
-                                                                        <c:otherwise>--%>
-                                                                    <option>${deptString}</option>
-                                                                    <%--</c:otherwise>
-                                                                </c:choose>--%>
-                                                                </c:forEach>
-                                                            </select>
-                                                            <!--<select class="form-control" >
-                                                                <option value="EWD">EWD</option>
-                                                                <option value="SD">SD</option>
-                                                                <option value="MAD">MAD</option>
-                                                            </select>-->
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <c:forEach var="deptString" items="${sessionScope.groups}" >
+                                                    <%--<c:choose>
+                                                        <c:when test="${selectedFlag}">
+                                                            <c:choose>
+                                                                <c:when test="${f:equals(selectedLocaleString,localeString)}" >
+                                                                    <option selected>${localeString}</option>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <option>${localeString}</option>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </c:when>
+                                                        <c:otherwise>--%>
+                                                    <option>${deptString.getName()}</option>
+                                                    <%--</c:otherwise>
+                                                </c:choose>--%>
+                                                </c:forEach>
+                                            </select>
+                                            <!--<select class="form-control" >
+                                                <option value="EWD">EWD</option>
+                                                <option value="SD">SD</option>
+                                                <option value="MAD">MAD</option>
+                                            </select>-->
+                                        </div>
+                                    </td>
+                                </tr>
 
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <button type="submit" class="btn btn-create block full-width m-b"  >Get Courses</button>
+                                <tr>
+                                    <td colspan="2">
+                                        <button type="submit" class="btn btn-create block full-width m-b"  >Get Courses</button>
 
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
-                                        </form>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </form>
 
-                                    </div>
-                                </section>
-                            </div>
-                            </div>
-                            <footer>
-                                <div class="footerlink">
-                                    <p class="lf">Copyright &copy; 2010 <a href="#">Lab Management</a> - All Rights Reserved</p>
-                                    <div style="clear:both;"></div>
-                                </div>
-                            </footer>
-                            </html>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <footer>
+            <div class="footerlink">
+                <p class="lf">Copyright &copy; 2010 <a href="#">Lab Management</a> - All Rights Reserved</p>
+                <div style="clear:both;"></div>
+            </div>
+        </footer>
+</html>
 

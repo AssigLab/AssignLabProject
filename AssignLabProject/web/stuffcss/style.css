@@ -654,6 +654,18 @@ a {
     font-size: 14px;
     cursor: pointer;
 }
+.btn-download{
+    background-color: #ff7b01;
+    border-color: #ff7b01;
+    color:#FFFFFF;
+    margin-left: 540px;
+    margin-top: 0px;
+    width: 150px;
+    height: 35px;
+    font-style: italic;
+    font-size: 14px;
+    cursor: pointer;
+}
 .btn-logout{
     background-color: #0087c1;
     border-color: #0087c1;

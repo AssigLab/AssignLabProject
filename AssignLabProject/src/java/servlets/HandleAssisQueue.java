@@ -63,7 +63,7 @@ public class HandleAssisQueue extends HttpServlet {
 //            RequestDispatcher requestDispatcher
 //                    = request.getRequestDispatcher("/StuffView/viewQueue.jsp");
 //            requestDispatcher.forward(request, response);
-            response.sendRedirect("/StaffSystem/StuffView/viewQueue.jsp");
+            response.sendRedirect("StuffView/viewQueue.jsp");
 
         }
     }

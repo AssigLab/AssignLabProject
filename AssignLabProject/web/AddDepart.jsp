@@ -60,15 +60,13 @@
 
                     <h2>Fresh <span>News</span></h2>
                     <ul class="news">
-                        <li><strong>June 30, 2010</strong>
-                            <h4><a href="#">Sed ut perspiciatis unde</a></h4>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque. </li>
-                        <li><strong>June 14, 2010</strong>
-                            <h4><a href="#">Neque porro quisquam est</a></h4>
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur magni. </li>
-                        <li><strong>May 29, 2010</strong>
-                            <h4><a href="#">Minima veniam, quis nostrum</a></h4>
-                            Uis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae. </li>
+                        <li><strong>18-02-2015</strong>
+                            <h4><a href="#">On the 11th of February 2015,</a></h4>
+                            Information Technology Institute hosted the well-known acclaimed Egyptian writer Gamal El-Ghitani. </li>
+                        <li><strong>08-02-2015</strong>
+                            <h4><a href="#">On February 3rd, 2015,</a></h4>
+                            Information Technology Institute hosted an esteemed delegation from the American multinational technology and consulting corporation, IBM.   </li>
+
                     </ul>
                 </aside>
                 <section id="content">
@@ -111,7 +109,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                       <input type="submit" class="btn btn-create block full-width m-b" />
+                                        <input type="submit" class="btn btn-create block full-width m-b" />
 
                                     </td>
                                     <td></td>

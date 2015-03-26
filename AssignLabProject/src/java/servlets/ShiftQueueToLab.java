@@ -52,7 +52,7 @@ public class ShiftQueueToLab extends HttpServlet {
             labInt.shiftqueue(currentLab, toShifteslab);
 
             RequestDispatcher requestDispatcher
-                    = request.getRequestDispatcher("/StuffView/Home.jsp");
+                    = request.getRequestDispatcher("StuffView/Home.jsp");
             requestDispatcher.forward(request, response);
         }
     }

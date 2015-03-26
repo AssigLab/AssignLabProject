@@ -55,7 +55,7 @@ public class HandleDeliveryQueue extends HttpServlet {
 
             if (request.getParameter("pick") != null) {
                 //first Servlet
-               // int1.updateDeliveryQueue(userRet);
+               //int1.updateDeliveryQueue(userRet);
 
             } else if (request.getParameter("dequeue") != null) {
                 //second    
@@ -64,7 +64,7 @@ public class HandleDeliveryQueue extends HttpServlet {
 //            RequestDispatcher requestDispatcher
 //                    = request.getRequestDispatcher("/StuffView/viewQueue.jsp");
 //            requestDispatcher.forward(request, response);
-            response.sendRedirect("/StaffSystem/StuffView/viewQueue.jsp");
+            response.sendRedirect("StuffView/viewQueue.jsp");
         }
     }
 

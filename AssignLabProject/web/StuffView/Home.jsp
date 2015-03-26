@@ -37,55 +37,47 @@
                     <nav>
                         <ul>
                             <li  class="current"><a href="#" class="m1">Home</a></li>
-                            <li><a href="GetDepartments.jsp" class="m2">View Lab</a></li>
+                            <li><a href="StuffView/GetDepartments.jsp" class="m2">View Lab</a></li>
                             <li class="last">
                                 <form action="LogoutServlet" method="post">
                                     <button type="submit" class="btn btn-logout block full-width m-b">Log Out</button>
                                 </form>
                             </li>                        </ul>
                     </nav>
-                    <form action="#" id="search-form">
-                        <fieldset>
-                            <div class="rowElem">
-                                <input type="text" class="form-control" placeholder="Search" required="">
-                                <!--<button type="button" class="btn btn-search block full-width m-b">Search</button>-->
-                                </fieldset>
-                                </form>
-                            </div>
-                            </header>
-                            <div class="container">
-                                <aside>
-                                    <h3>Categories</h3>
-                                    <ul class="categories">
-                                        <li><span><a href="#" >About Us</a></span></li>
-                                        <!--<li class="last"><span><a href="#" >Show Statistics</a></span></li>-->
-                                    </ul>
+                   
+                </div>
+            </header>
+            <div class="container">
+                <aside>
+                    <h3>Categories</h3>
+                    <ul class="categories">
+                        <li><span><a href="#" >About Us</a></span></li>
+                        <!--<li class="last"><span><a href="#" >Show Statistics</a></span></li>-->
+                    </ul>
 
-                                    <h2>Fresh <span>News</span></h2>
-                                    <ul class="news">
-                                        <li><strong>June 30, 2010</strong>
-                                            <h4><a href="#">Sed ut perspiciatis unde</a></h4>
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque. </li>
-                                        <li><strong>June 14, 2010</strong>
-                                            <h4><a href="#">Neque porro quisquam est</a></h4>
-                                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur magni. </li>
-                                        <li><strong>May 29, 2010</strong>
-                                            <h4><a href="#">Minima veniam, quis nostrum</a></h4>
-                                            Uis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae. </li>
-                                    </ul>
-                                </aside>
-                                <section id="content">
-                                    <div id="banner">
-                                        <h2><a href="GetDepartments.jsp">Professional Lab<span>Management System  <span>Since 2015</span></span></a></h2>
-                                    </div>
+                    <h2>Fresh <span>News</span></h2>
+                    <ul class="news">
+                        <li><strong>18-02-2015</strong>
+                            <h4><a href="#">On the 11th of February 2015,</a></h4>
+                             Information Technology Institute hosted the well-known acclaimed Egyptian writer Gamal El-Ghitani. </li>
+                        <li><strong>08-02-2015</strong>
+                            <h4><a href="#">On February 3rd, 2015,</a></h4>
+                            Information Technology Institute hosted an esteemed delegation from the American multinational technology and consulting corporation, IBM.   </li>
+                        
+                    </ul>
+                </aside>
+                <section id="content">
+                    <div id="banner">
+                        <h2><a href="GetDepartments.jsp">Professional Lab<span>Management System  <span>Since 2015</span></span></a></h2>
+                    </div>
 
-                                </section>
-                            </div>
-                            </div>
-                            <footer>
-                                <div class="footerlink">
-                                    <p class="lf">Copyright &copy; 2015 <a href="#">Lab Management</a> - All Rights Reserved</p>
-                                    <div style="clear:both;"></div>
-                                </div>
-                            </footer>
-                            </html>
+                </section>
+            </div>
+        </div>
+        <footer>
+            <div class="footerlink">
+                <p class="lf">Copyright &copy; 2015 <a href="#">Lab Management</a> - All Rights Reserved</p>
+                <div style="clear:both;"></div>
+            </div>
+        </footer>
+</html>

@@ -56,7 +56,7 @@ public class GetGroups extends HttpServlet {
                 request.getSession().setAttribute("user", user);
 
                 System.out.println(groups);
-
+                                
                 request.getSession().setAttribute("groups", groups);
 
                 RequestDispatcher requestDispatcher

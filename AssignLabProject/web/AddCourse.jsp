@@ -16,11 +16,11 @@
         <script type="text/javascript" src="./js/Myriad_Pro_400.font.js"></script>
         <script>
             function getAllDepart() {
-                if("${notification}"!==""){
-                    document.getElementById("notify").hidden=false;
+                if ("${notification}" !== "") {
+                    document.getElementById("notify").hidden = false;
                 }
-                else{
-                    document.getElementById("notify").hidden=true;
+                else {
+                    document.getElementById("notify").hidden = true;
                 }
                 var req;
                 if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -29,7 +29,7 @@
                 else {// code for IE6, IE5
                     req = new ActiveXObject("Microsoft.XMLHTTP");
                 }
-                req.onreadystatechange = function() {
+                req.onreadystatechange = function () {
                     if (req.readyState == 4 && req.status == 200) {
                         var xmlDoc = req.responseXML;
                         var depts = xmlDoc.getElementsByTagName("depart");
@@ -46,8 +46,8 @@
                 req.send(null);
             }
 
-            function closeNotify(){
-                document.getElementById("notify").hidden=true;
+            function closeNotify() {
+                document.getElementById("notify").hidden = true;
             }
             // check user select depart
             function chooseDept() {
@@ -67,11 +67,11 @@
                 var end_time = document.getElementById("etime").value;
                 if (start_date.trim() != "" && end_date.trim() != "" && start_time.trim() != "" && end_time.trim() != "") {
                     if ((new Date(start_date + " " + start_time).getTime()) < (new Date(end_date + " " + end_time).getTime())) {
-                        var alldates=start_date + " " + start_time + " , " + end_date + " " + end_time;
-                        $('#containsLab').append('<label><input type="checkbox" class="list_labs" checked name="labs" value="'+alldates+'"/><label>' + alldates + "<br/>");
+                        var alldates = start_date + " " + start_time + " , " + end_date + " " + end_time;
+                        $('#containsLab').append('<label><input type="checkbox" class="list_labs" checked name="labs" value="' + alldates + '"/><label>' + alldates + "<br/>");
                         document.getElementById("errorDateTime").innerHTML = "";
                     } else {
-                       
+
                         document.getElementById("errorDateTime").innerHTML = "check start date and time is before end date and time"
                     }
                 }
@@ -82,32 +82,32 @@
             function remove_lab() {
                 $(".list_labs:not(:checked)").parent().remove();
             }
-            
-            function checkName(){
+
+            function checkName() {
                 var req;
-                if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
-                   req=new XMLHttpRequest();
+                if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                    req = new XMLHttpRequest();
                 }
-                else{// code for IE6, IE5
-                  req=new ActiveXObject("Microsoft.XMLHTTP");
+                else {// code for IE6, IE5
+                    req = new ActiveXObject("Microsoft.XMLHTTP");
                 }
-                req.onreadystatechange=function(){
-                        if (req.readyState==4 && req.status==200){
-                                document.getElementById("errorName").innerHTML=req.responseText;
-                        }
+                req.onreadystatechange = function () {
+                    if (req.readyState == 4 && req.status == 200) {
+                        document.getElementById("errorName").innerHTML = req.responseText;
+                    }
                 }
-                var vvv=document.getElementById("name").value;
-                req.open("GET" , "http://localhost:8080/AssignLabProject/validAddCourse?name="+vvv,true);
+                var vvv = document.getElementById("name").value;
+                req.open("GET", "http://localhost:8080/AssignLabProject/validAddCourse?name=" + vvv, true);
                 req.send(null);
             }
-            
+
             function CheckAndSubmit() {
                 if (document.getElementById("errorName").innerHTML.trim() == "" && document.getElementById("deptsall").value.trim() != "") {
                     return true;
                 }
                 return false;
             }
-            
+
         </script>
     </head>
     <body id="page2" onload="getAllDepart()">
@@ -153,15 +153,13 @@
 
                     <h2>Fresh <span>News</span></h2>
                     <ul class="news">
-                        <li><strong>June 30, 2010</strong>
-                            <h4><a href="#">Sed ut perspiciatis unde</a></h4>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque. </li>
-                        <li><strong>June 14, 2010</strong>
-                            <h4><a href="#">Neque porro quisquam est</a></h4>
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur magni. </li>
-                        <li><strong>May 29, 2010</strong>
-                            <h4><a href="#">Minima veniam, quis nostrum</a></h4>
-                            Uis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae. </li>
+                        <li><strong>18-02-2015</strong>
+                            <h4><a href="#">On the 11th of February 2015,</a></h4>
+                            Information Technology Institute hosted the well-known acclaimed Egyptian writer Gamal El-Ghitani. </li>
+                        <li><strong>08-02-2015</strong>
+                            <h4><a href="#">On February 3rd, 2015,</a></h4>
+                            Information Technology Institute hosted an esteemed delegation from the American multinational technology and consulting corporation, IBM.   </li>
+
                     </ul>
                 </aside>
                 <section id="content">
@@ -170,7 +168,7 @@
                             <button aria-hidden="true" data-dismiss="alert" class="close1" type="button" onclick="closeNotify();">×</button>
                             Successful Operation
                         </div>
-                        <form class="m-t" onsubmit="return CheckAndSubmit ()"  method="post" action="validAddCourse">
+                        <form class="m-t" onsubmit="return CheckAndSubmit()"  method="post" action="validAddCourse">
                             <table class="form_table">
                                 <tr>
                                     <td colspan="3">
@@ -242,7 +240,7 @@
                                         </div>
                                         <span class="span-col" id="errorDateTime"></span><br/>
                                         <a href="" onclick="add_lab();
-                                                            return false;">Add lab</a> <br/>
+                                                return false;">Add lab</a> <br/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -250,7 +248,7 @@
                                         <div id="containsLab" style="border:2px solid #ccc; width:300px; height: 350px; overflow: auto;">
                                         </div><br/>
                                         <a href="" onclick="remove_lab();
-                                                                    return false;">Remove</a>  
+                                                return false;">Remove</a>  
                                     </td>
                                 </tr>
                                 <tr>

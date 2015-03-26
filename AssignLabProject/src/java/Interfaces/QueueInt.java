@@ -15,17 +15,19 @@ import java.util.List;
  * @author rania
  */
 public interface QueueInt {
-     
-             public void shiftDeliveryQueue(Lab lab, Date date);
-        
-           public boolean insertTraineeInDeliveryQueue(User user, Lab lab,String comment);
-             public List<User>  getTraineeInDeliveryQueue(Lab lab);
-             
-             
-             
-               public boolean cancelRequestIndeliveryQueue(User user, Lab lab );
-     public boolean cancelRequestInAssistanceQueue(User user, Lab lab );
-   public boolean insertTraineeInAssistantQueue(User user, Lab lab,String comment);
-   public List<User> getTraineeInAssistanceQueue(Lab lab);
 
+    public void shiftDeliveryQueue(Lab lab, Date date);
+
+    public boolean insertTraineeInDeliveryQueue(User user, Lab lab, String comment);
+
+    public List<User> getTraineeInDeliveryQueue(Lab lab);
+
+    public boolean cancelRequestIndeliveryQueue(User user, Lab lab);
+
+    public boolean cancelRequestInAssistanceQueue(User user, Lab lab);
+
+    public boolean insertTraineeInAssistantQueue(User user, Lab lab, String comment);
+
+    public List<User> getTraineeInAssistanceQueue(Lab lab);
+    
 }

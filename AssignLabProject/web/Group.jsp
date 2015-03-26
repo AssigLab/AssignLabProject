@@ -63,15 +63,13 @@
 
                     <h2>Fresh <span>News</span></h2>
                     <ul class="news">
-                        <li><strong>June 30, 2010</strong>
-                            <h4><a href="#">Sed ut perspiciatis unde</a></h4>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque. </li>
-                        <li><strong>June 14, 2010</strong>
-                            <h4><a href="#">Neque porro quisquam est</a></h4>
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur magni. </li>
-                        <li><strong>May 29, 2010</strong>
-                            <h4><a href="#">Minima veniam, quis nostrum</a></h4>
-                            Uis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae. </li>
+                        <li><strong>18-02-2015</strong>
+                            <h4><a href="#">On the 11th of February 2015,</a></h4>
+                             Information Technology Institute hosted the well-known acclaimed Egyptian writer Gamal El-Ghitani. </li>
+                        <li><strong>08-02-2015</strong>
+                            <h4><a href="#">On February 3rd, 2015,</a></h4>
+                            Information Technology Institute hosted an esteemed delegation from the American multinational technology and consulting corporation, IBM.   </li>
+                        
                     </ul>
                 </aside>
                 <section id="content">
@@ -81,9 +79,7 @@
                     <div class="inside">
 
                         <h2>Move Forward <span>With Your Education</span></h2>
-                        <p><span class="txt1">Eusus consequam</span> vitae habitur amet nullam vitae condis phasellus sed justo. Orcivel mollis intesque eu sempor ridictum a non laorem lacingilla wisi. </p>
-                        <div class="img-box"><img src="images/1page-img.jpg">Eusus consequam vitae habitur amet nullam vitae condis phasellus sed justo. Orcivel mollis intesque eu sempor ridictum a non laorem lacingilla wisi. Nuncrhoncus eros <a href="#">maurien ulla</a> facilis tor mauris tincidunt et vitae morbi. Velelit condimentes in laorem quis nullamcorper nam fauctor feugiat pellent sociis.</div>
-                        <p class="p0">Eusus consequam vitae habitur amet nullam vitae condis phasellus sed justo. Orcivel mollis intesque eu sempor ridictum a <a href="#">non laorem</a> lacingilla wisi.</p>
+                        
                     </div>
                 </section>
             </div>
